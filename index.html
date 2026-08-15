@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shruthi Sundar — Product Thinker × Engineer × Builder</title>
+  <meta name="description" content="Cinematic interactive portfolio of Shruthi Sundar. Product thinker, engineer, and builder exploring the intersection of human insight and machine systems.">
+  
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Deep Atmospheric Background Lighting -->
+  <div class="studio-ambient-bg">
+    <div class="glow-core" id="glowCore"></div>
+    <div class="glow-burgundy" id="glowBurgundy"></div>
+    <div class="subtle-grain"></div>
+  </div>
+
+  <!-- Global Hero Wrapper (Monumental Cinematic Stage with Depth Layering) -->
+  <div class="hero-stage" id="heroStage">
+    
+    <!-- Minimalist Top Navigation -->
+    <header class="top-nav" id="topNav">
+      <div class="nav-brand">
+        <a href="#heroStage" class="brand-link">
+          <span class="brand-name">SHRUTHI SUNDAR</span>
+        </a>
+      </div>
+
+      <div class="nav-meta">
+        <span class="meta-tag">PRODUCT × TECHNOLOGY × DATA × AI</span>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#about" class="nav-item">ABOUT</a>
+        <a href="#work" class="nav-item">WORK</a>
+        <a href="#case-study" class="nav-item">CASE STUDY</a>
+        <a href="#thinking" class="nav-item">THINKING</a>
+        <a href="#languages" class="nav-item">ENGINEERING × PRODUCT</a>
+        <a href="#experience" class="nav-item">EXPERIENCE</a>
+        <a href="#contact" class="nav-item">CONTACT</a>
+      </nav>
+    </header>
+
+    <!-- Main Cinematic Centerpiece Stage -->
+    <main class="hero-cinematic-stage" id="heroCinematicStage">
+      
+      <!-- LAYER 1: Monumental Kinetic Typography SITTING BEHIND THE IMAGE -->
+      <div class="hero-bg-text-layer" id="heroBgTextLayer" aria-hidden="true">
+        <div class="bg-title-stacked">
+          <span class="bg-line line-1">SHRUTHI</span>
+          <span class="bg-line line-2">SUNDAR</span>
+        </div>
+      </div>
+
+      <!-- LAYER 2: Floating Header Meta (Above portrait) -->
+      <div class="hero-floating-meta">
+        <div class="hero-meta-badge">
+          <span class="beacon-dot"></span>
+          <span class="meta-badge-text">PRODUCT × TECHNOLOGY × DATA × AI</span>
+        </div>
+        <p class="hero-floating-role">Product thinker × engineer × builder</p>
+      </div>
+
+      <!-- LAYER 3: Dominant Centerpiece Portrait (Overlapping in Front of the Name) -->
+      <div class="hero-portrait-stage">
+        <div class="hero-portrait-container" id="heroPortraitContainer">
+          
+          <!-- BASE LAYER: Human Photograph (Visible by default) -->
+          <img 
+            src="assets/shruthi-human.png" 
+            alt="Shruthi Sundar — Human" 
+            class="hero-image human-base" 
+            id="humanBaseImg"
+            draggable="false"
+          >
+
+          <!-- TOP LAYER: Robot Transformation (Revealed via soft mask on interaction) -->
+          <div class="robot-reveal-mask" id="robotRevealMask">
+            <img 
+              src="assets/shruthi-robot.png" 
+              alt="Shruthi Sundar — Robot" 
+              class="hero-image robot-top" 
+              id="robotTopImg"
+              draggable="false"
+            >
+          </div>
+
+        </div>
+      </div>
+
+      <!-- LAYER 4: Bottom Floating Statement & Action Controls -->
+      <div class="hero-floating-controls">
+        <div class="hero-quote-inline">
+          <span class="quote-main">I notice friction.</span>
+          <span class="quote-sub">I build things.</span>
+        </div>
+
+        <div class="hero-actions-row centered-actions">
+          <a href="#work" class="hero-btn-primary">
+            <span>EXPLORE ARCHIVE</span>
+            <span class="btn-arrow">↓</span>
+          </a>
+          <a href="#contact" class="hero-btn-secondary">
+            <span>GET IN TOUCH</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Discreet Editorial Footer Bar -->
+    <footer class="hero-footer">
+      <div class="footer-col-left">
+        <span class="mono-meta">EST. 2026 // SAN FRANCISCO & GLOBAL</span>
+      </div>
+      <div class="footer-col-center">
+        <span class="interaction-hint">HOVER TO REVEAL ROBOT · HOLD TO TRANSFORM</span>
+      </div>
+      <div class="footer-col-right">
+        <span class="mono-meta">DUAL SPECIMEN // 1:1 LAYER COMPOSITING</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- =========================================================================
+       MAIN CONTENT: CONTINUATION OF LUXURY EDITORIAL STORYTELLING
+       ========================================================================= -->
+  <div class="site-content-flow" id="siteContentFlow">
+
+    <!-- 1. ABOUT / INTRODUCTION -->
+    <section class="editorial-section section-about" id="about">
+      <div class="section-container">
+        <div class="section-eyebrow-wrapper reveal-item">
+          <span class="mono-tag">01 // MANIFESTO</span>
+        </div>
+
+        <h2 class="statement-headline reveal-item">
+          I build at the intersection of <span class="highlight-serif">technology</span>, <span class="highlight-serif">products</span> and <span class="highlight-serif">people</span>.
+        </h2>
+
+        <div class="about-grid reveal-item">
+          <div class="about-lead-col">
+            <p class="about-lead-text">
+              A software engineer turned product thinker, I enjoy turning complex technical problems into products that are simple, useful and human.
+            </p>
+          </div>
+          <div class="about-meta-col">
+            <div class="meta-tag-pills">
+              <span class="meta-pill">PRODUCT</span>
+              <span class="meta-pill-sep">·</span>
+              <span class="meta-pill">TECHNOLOGY</span>
+              <span class="meta-pill-sep">·</span>
+              <span class="meta-pill">DATA</span>
+              <span class="meta-pill-sep">·</span>
+              <span class="meta-pill">SYSTEMS</span>
+            </div>
+            <p class="meta-subtext">Operating across engineering rigor and product vision to bridge technical reality with intuitive human experiences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SELECTED WORK -->
+    <section class="editorial-section section-work" id="work">
+      <div class="section-container">
+        <div class="section-header-block reveal-item">
+          <span class="mono-tag">02 // SELECTED WORK</span>
+          <h2 class="section-title">Problems I've had the privilege of solving.</h2>
+        </div>
+
+        <div class="editorial-projects-stack">
+          
+          <!-- Project 01 -->
+          <article class="editorial-project-block reveal-item" data-project="01">
+            <div class="project-info-side">
+              <div class="project-header-meta">
+                <span class="project-index">PROJECT 01</span>
+                <span class="project-domains">AUTOMATION · DATA · FINTECH</span>
+              </div>
+              <h3 class="project-title">Liquidity Reporting Engine</h3>
+              <p class="project-description">
+                Turning a manual, high-stakes regulatory reporting workflow into an automated system that compresses multi-tier spreadsheet verification into instantaneous execution.
+              </p>
+              <div class="project-metrics-pills">
+                <span class="metric-badge">30–40 min → 12 sec runtime</span>
+                <span class="metric-badge">Zero manual errors</span>
+              </div>
+              <a href="#case-study" class="project-action-link">
+                <span>VIEW CASE STUDY</span>
+                <span class="action-arrow">→</span>
+              </a>
+            </div>
+
+            <div class="project-visual-side">
+              <div class="schematic-card">
+                <div class="schematic-header">
+                  <span class="schema-code">RLT // AUTOMATED PIPELINE</span>
+                  <span class="schema-status">ACTIVE</span>
+                </div>
+                <div class="schematic-flow">
+                  <div class="flow-node">
+                    <span class="node-title">INGEST</span>
+                    <span class="node-sub">Multi-Source Feeds</span>
+                  </div>
+                  <div class="flow-connector">
+                    <div class="pulse-line"></div>
+                  </div>
+                  <div class="flow-node active">
+                    <span class="node-title">TRANSFORM</span>
+                    <span class="node-sub">Declarative Rules</span>
+                  </div>
+                  <div class="flow-connector">
+                    <div class="pulse-line"></div>
+                  </div>
+                  <div class="flow-node">
+                    <span class="node-title">DELIVER</span>
+                    <span class="node-sub">Real-Time Ledger</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 02 -->
+          <article class="editorial-project-block reveal-item" data-project="02">
+            <div class="project-info-side">
+              <div class="project-header-meta">
+                <span class="project-index">PROJECT 02</span>
+                <span class="project-domains">SYSTEMS · KAFKA · HIGH-THROUGHPUT</span>
+              </div>
+              <h3 class="project-title">Real-Time Treasury Balance Router</h3>
+              <p class="project-description">
+                Engineered fault-tolerant distributed event streams connecting disparate global transaction ledgers into a unified treasury liquidity pulse.
+              </p>
+              <div class="project-metrics-pills">
+                <span class="metric-badge">100 GB+ Daily Scale</span>
+                <span class="metric-badge">Sub-second Stream Latency</span>
+              </div>
+              <div class="project-tech-tags">
+                <span>Kafka</span><span>Spring Boot</span><span>Snowflake</span><span>Java</span>
+              </div>
+            </div>
+
+            <div class="project-visual-side">
+              <div class="schematic-card telemetry-card">
+                <div class="schematic-header">
+                  <span class="schema-code">EVENT STREAM ROUTER</span>
+                  <span class="schema-status">100% HEALTH</span>
+                </div>
+                <div class="telemetry-bars">
+                  <div class="telemetry-bar" style="--h: 65%;"></div>
+                  <div class="telemetry-bar" style="--h: 88%;"></div>
+                  <div class="telemetry-bar" style="--h: 45%;"></div>
+                  <div class="telemetry-bar" style="--h: 94%;"></div>
+                  <div class="telemetry-bar" style="--h: 78%;"></div>
+                  <div class="telemetry-bar" style="--h: 82%;"></div>
+                  <div class="telemetry-bar" style="--h: 98%;"></div>
+                </div>
+                <div class="telemetry-meta">
+                  <span>REAL-TIME INGESTION</span>
+                  <span class="mono-value">98.4k evt/s</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 03 -->
+          <article class="editorial-project-block reveal-item" data-project="03">
+            <div class="project-info-side">
+              <div class="project-header-meta">
+                <span class="project-index">PROJECT 03</span>
+                <span class="project-domains">ANALYTICS · POWER BI · DECISION UX</span>
+              </div>
+              <h3 class="project-title">Self-Serve Risk Analytics Portal</h3>
+              <p class="project-description">
+                Designed and delivered intuitive data exploration workspaces empowering financial risk officers to run sub-second parametric queries without technical intervention.
+              </p>
+              <div class="project-metrics-pills">
+                <span class="metric-badge">Cross-Team Adoption</span>
+                <span class="metric-badge">Interactive Dashboards</span>
+              </div>
+              <div class="project-tech-tags">
+                <span>Power BI</span><span>Angular</span><span>Snowflake</span><span>REST APIs</span>
+              </div>
+            </div>
+
+            <div class="project-visual-side">
+              <div class="schematic-card analytics-card">
+                <div class="schematic-header">
+                  <span class="schema-code">PORTAL // DECISION MATRIX</span>
+                  <span class="schema-status">SYNCED</span>
+                </div>
+                <div class="matrix-grid">
+                  <div class="matrix-item">
+                    <span class="matrix-lbl">QUERY LATENCY</span>
+                    <span class="matrix-val">0.32s</span>
+                  </div>
+                  <div class="matrix-item">
+                    <span class="matrix-lbl">DATA ACCURACY</span>
+                    <span class="matrix-val">99.99%</span>
+                  </div>
+                  <div class="matrix-item">
+                    <span class="matrix-lbl">ACTIVE MONITORS</span>
+                    <span class="matrix-val">240+</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CASE STUDY — LIQUIDITY / RLT -->
+    <section class="editorial-section section-case-study" id="case-study">
+      <div class="section-container">
+        
+        <div class="case-study-hero reveal-item">
+          <div class="case-study-badge">
+            <span class="mono-tag">03 // DEEP DIVE CASE STUDY</span>
+            <span class="case-tag">TREASURY REGULATORY TECHNOLOGY (RLT)</span>
+          </div>
+          <h2 class="case-study-main-title">
+            Compressing 40 Minutes of Fragile Manual Reporting Into 12 Seconds.
+          </h2>
+        </div>
+
+        <!-- Giant Animated Metric Transformation -->
+        <div class="metric-hero-banner reveal-item">
+          <div class="metric-compare-box">
+            <div class="metric-col before">
+              <span class="metric-label">PREVIOUS STATE</span>
+              <span class="metric-big-number">30–40 min</span>
+              <span class="metric-caption">Manual spreadsheet extraction & repeated intervention</span>
+            </div>
+
+            <div class="metric-divider-arrow">
+              <span class="arrow-svg">→</span>
+            </div>
+
+            <div class="metric-col after">
+              <span class="metric-label">AUTOMATED PIPELINE</span>
+              <span class="metric-big-number highlight-gold" id="counterTarget">12 sec</span>
+              <span class="metric-caption">Deterministic, audit-ready automated delivery</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3-Pillar Storytelling Grid -->
+        <div class="case-study-pillars-grid">
+          
+          <div class="pillar-card reveal-item">
+            <div class="pillar-num">01</div>
+            <h4 class="pillar-title">THE PROBLEM</h4>
+            <p class="pillar-text">
+              Regulatory Liquidity Testing (RLT) required treasury analysts to pull disparate ledger snapshots, manually resolve column mismatches, and copy-paste formulas across fragmented spreadsheets under stringent market close deadlines.
+            </p>
+          </div>
+
+          <div class="pillar-card reveal-item">
+            <div class="pillar-num">02</div>
+            <h4 class="pillar-title">THE APPROACH</h4>
+            <p class="pillar-text">
+              Re-engineered the pipeline around declarative data contracts, autonomous data validation microservices, and unified stream transformation that converts raw transaction logs into validated regulatory balance sheets.
+            </p>
+          </div>
+
+          <div class="pillar-card reveal-item">
+            <div class="pillar-num">03</div>
+            <h4 class="pillar-title">THE RESULT</h4>
+            <p class="pillar-text">
+              Eliminated manual touchpoints, achieved 99.5% runtime reduction, guaranteed repeatable audit compliance, and liberated analysts from operational toil to strategic liquidity forecasting.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Technical Pipeline Flow Visualization -->
+        <div class="abstract-pipeline-stage reveal-item">
+          <div class="pipeline-header">
+            <span class="mono-meta">SYSTEM ARCHITECTURE // DATA LIFECYCLE</span>
+          </div>
+          <div class="pipeline-track">
+            
+            <div class="pipeline-step">
+              <div class="step-indicator">01</div>
+              <div class="step-content">
+                <span class="step-name">INPUT</span>
+                <span class="step-detail">Disparate Core Banking Ledgers</span>
+              </div>
+            </div>
+
+            <div class="pipeline-arrow">──────▶</div>
+
+            <div class="pipeline-step active">
+              <div class="step-indicator">02</div>
+              <div class="step-content">
+                <span class="step-name">TRANSFORMATION</span>
+                <span class="step-detail">Stream Processing & Normalization</span>
+              </div>
+            </div>
+
+            <div class="pipeline-arrow">──────▶</div>
+
+            <div class="pipeline-step">
+              <div class="step-indicator">03</div>
+              <div class="step-content">
+                <span class="step-name">OUTPUT</span>
+                <span class="step-detail">Audit-Ready 12-Second Delivery</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. PRODUCT THINKING -->
+    <section class="editorial-section section-thinking" id="thinking">
+      <div class="section-container">
+        
+        <div class="section-header-block reveal-item">
+          <span class="mono-tag">04 // PRODUCT PHILOSOPHY</span>
+          <h2 class="thinking-headline">
+            Good products <span class="highlight-serif">hide complexity</span>.
+          </h2>
+        </div>
+
+        <div class="principles-accordion">
+          
+          <div class="principle-row reveal-item">
+            <div class="principle-num">01</div>
+            <div class="principle-body">
+              <h3 class="principle-title">Start with the problem</h3>
+              <p class="principle-description">
+                Understand the actual user and business constraint before jumping to a solution. The cleanest architecture is meaningless if it solves the wrong friction.
+              </p>
+            </div>
+          </div>
+
+          <div class="principle-row reveal-item">
+            <div class="principle-num">02</div>
+            <div class="principle-body">
+              <h3 class="principle-title">Make complexity disappear</h3>
+              <p class="principle-description">
+                Strong products turn complicated distributed systems into simple, effortless experiences where the heavy lifting happens quietly under the hood.
+              </p>
+            </div>
+          </div>
+
+          <div class="principle-row reveal-item">
+            <div class="principle-num">03</div>
+            <div class="principle-body">
+              <h3 class="principle-title">Build, measure, learn</h3>
+              <p class="principle-description">
+                Ship something resilient and useful, observe how humans actually interact with it in production, and ruthlessly iterate based on ground truth data.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. ENGINEERING × PRODUCT -->
+    <section class="editorial-section section-languages" id="languages">
+      <div class="section-container">
+        
+        <div class="languages-header reveal-item">
+          <span class="mono-tag">05 // DUAL DISCIPLINE</span>
+          <h2 class="languages-title">I speak <span class="highlight-serif">both languages</span>.</h2>
+          <p class="languages-subtitle">
+            I don't see product and engineering as separate worlds. Technical depth informs product intuition; product clarity directs engineering power.
+          </p>
+        </div>
+
+        <!-- Dual Side Interactive Bridge -->
+        <div class="dual-discipline-stage reveal-item">
+          
+          <!-- Engineering Side -->
+          <div class="discipline-side engineering-side">
+            <div class="side-header">
+              <span class="side-tag">SYSTEMS & CODE</span>
+              <h3 class="side-title">ENGINEERING</h3>
+            </div>
+            <ul class="skills-list">
+              <li class="skill-item">Java & Spring Boot</li>
+              <li class="skill-item">RESTful Microservices</li>
+              <li class="skill-item">Kafka Event Streaming</li>
+              <li class="skill-item">Snowflake & DB2</li>
+              <li class="skill-item">Power BI & Analytics</li>
+              <li class="skill-item">Angular & TypeScript</li>
+              <li class="skill-item">Python Data Scripts</li>
+            </ul>
+          </div>
+
+          <!-- Interactive Bridge Hub in Middle -->
+          <div class="discipline-bridge-hub">
+            <div class="bridge-core-node">
+              <div class="bridge-ring"></div>
+              <div class="bridge-dot"></div>
+            </div>
+            <span class="bridge-label">SYNTHESIS</span>
+          </div>
+
+          <!-- Product Side -->
+          <div class="discipline-side product-side">
+            <div class="side-header">
+              <span class="side-tag">STRATEGY & UX</span>
+              <h3 class="side-title">PRODUCT</h3>
+            </div>
+            <ul class="skills-list">
+              <li class="skill-item">Product Strategy & Roadmaps</li>
+              <li class="skill-item">User Friction Discovery</li>
+              <li class="skill-item">KPIs & Impact Metrics</li>
+              <li class="skill-item">Hypothesis Experimentation</li>
+              <li class="skill-item">Ruthless Prioritization</li>
+              <li class="skill-item">Systems & Modular Thinking</li>
+              <li class="skill-item">Cross-Functional Leadership</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. EXPERIENCE TIMELINE -->
+    <section class="editorial-section section-experience" id="experience">
+      <div class="section-container">
+        
+        <div class="section-header-block reveal-item">
+          <span class="mono-tag">06 // CAREER TRAJECTORY</span>
+          <h2 class="section-title">Built in high-conviction environments.</h2>
+        </div>
+
+        <div class="experience-timeline">
+          
+          <div class="timeline-entry reveal-item">
+            <div class="timeline-meta-col">
+              <span class="timeline-company">MORGAN STANLEY</span>
+              <span class="timeline-period">SOFTWARE ENGINEER → SDE2 → SDE3</span>
+              <span class="timeline-badge">FINTECH · TREASURY · REGTECH</span>
+            </div>
+
+            <div class="timeline-content-col">
+              <h3 class="timeline-role-title">Senior Software Development Engineer / Product Lead</h3>
+              <p class="timeline-summary">
+                Engineered mission-critical regulatory liquidity engines and automated data infrastructure supporting global treasury compliance and enterprise balance sheet verification.
+              </p>
+              <ul class="timeline-highlights">
+                <li>Spearheaded the complete end-to-end automation of Regulatory Liquidity Testing (RLT), shrinking reporting latency from 40 minutes down to 12 seconds.</li>
+                <li>Navigated the intersection of engineering architecture and product leadership, converting regulatory mandates into clear technical roadmaps.</li>
+                <li>Architected high-throughput data processing workflows across Kafka event streams, Snowflake warehouses, and real-time Power BI reporting portals.</li>
+                <li>Mentored engineering teams on product-minded system design, clean modular APIs, and fault-tolerant architecture.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. NUMBERS / IMPACT SECTION -->
+    <section class="editorial-section section-impact" id="impact">
+      <div class="section-container">
+        
+        <div class="impact-grid">
+          
+          <div class="impact-stat-card reveal-item">
+            <div class="stat-number-giant">12<span class="stat-unit">sec</span></div>
+            <div class="stat-meta-label">AUTOMATED WORKFLOW</div>
+            <p class="stat-detail">Runtime down from 30–40 minutes of manual multi-step processing.</p>
+          </div>
+
+          <div class="impact-stat-card reveal-item">
+            <div class="stat-number-giant">100<span class="stat-unit">GB+</span></div>
+            <div class="stat-meta-label">DATA SCALE MANAGED</div>
+            <p class="stat-detail">High-volume financial transaction ledger streams processed daily.</p>
+          </div>
+
+          <div class="impact-stat-card reveal-item">
+            <div class="stat-number-giant">3<span class="stat-unit">×</span></div>
+            <div class="stat-meta-label">ENGINEERING PROGRESSION</div>
+            <p class="stat-detail">Rapid promotion trajectory from backend engineer to SDE3 product driver.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 8. BEYOND WORK -->
+    <section class="editorial-section section-beyond" id="beyond">
+      <div class="section-container">
+        
+        <div class="section-header-block reveal-item">
+          <span class="mono-tag">07 // PERSONAL PERSPECTIVE</span>
+          <h2 class="beyond-headline">Curiosity doesn't <span class="highlight-serif">clock out</span>.</h2>
+        </div>
+
+        <div class="beyond-collage-grid">
+          
+          <div class="beyond-item reveal-item">
+            <div class="beyond-number">01</div>
+            <h4 class="beyond-title">TRAVEL</h4>
+            <p class="beyond-desc">Exploring high-density global urban architectures and contrasting quiet cultural frontiers.</p>
+          </div>
+
+          <div class="beyond-item reveal-item">
+            <div class="beyond-number">02</div>
+            <h4 class="beyond-title">TREKKING</h4>
+            <p class="beyond-desc">High-altitude endurance and mental resilience in unpredictable mountain terrain.</p>
+          </div>
+
+          <div class="beyond-item reveal-item">
+            <div class="beyond-number">03</div>
+            <h4 class="beyond-title">DANCE</h4>
+            <p class="beyond-desc">Rhythmic precision, spatial intuition, and disciplined non-verbal communication.</p>
+          </div>
+
+          <div class="beyond-item reveal-item">
+            <div class="beyond-number">04</div>
+            <h4 class="beyond-title">PHOTOGRAPHY</h4>
+            <p class="beyond-desc">Framing natural geometry, contrast, and candid human micro-expressions.</p>
+          </div>
+
+          <div class="beyond-item reveal-item">
+            <div class="beyond-number">05</div>
+            <h4 class="beyond-title">BUILDING THINGS</h4>
+            <p class="beyond-desc">Weekend prototyping, experimenting with emerging tech, and turning side ideas into working software.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 9. CURRENTLY EXPLORING -->
+    <section class="editorial-section section-exploring" id="exploring">
+      <div class="section-container">
+        
+        <div class="exploring-card reveal-item">
+          <div class="exploring-badge-row">
+            <span class="mono-tag">08 // THE HORIZON</span>
+            <span class="exploring-pill">AI × PRODUCT × HUMAN EXPERIENCE</span>
+          </div>
+
+          <h3 class="exploring-title">CURRENTLY EXPLORING</h3>
+
+          <p class="exploring-copy">
+            "Exploring how generative intelligence and autonomous agent systems can move beyond trivial automation to become deeply integrated, highly reliable partners in human decision-making and creative production."
+          </p>
+
+          <div class="exploring-radar-grid">
+            <div class="radar-line"></div>
+            <div class="radar-signal"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10. CONTACT / FINAL CTA & FOOTER -->
+    <section class="editorial-section section-contact" id="contact">
+      <div class="section-container">
+        
+        <div class="closing-cta-block reveal-item">
+          <span class="mono-tag">09 // GET IN TOUCH</span>
+          
+          <h2 class="closing-headline">
+            Have a problem <span class="highlight-serif">worth solving?</span>
+          </h2>
+          <p class="closing-sub">Let's build something useful.</p>
+
+          <div class="cta-actions-row">
+            <a href="mailto:shruthisundar@example.com" class="cta-button-main">
+              <span>LET'S TALK</span>
+              <span class="cta-arrow-icon">→</span>
+            </a>
+          </div>
+
+          <div class="social-links-row">
+            <a href="mailto:shruthisundar@example.com" class="social-link" target="_blank" rel="noopener">EMAIL</a>
+            <span class="social-sep">/</span>
+            <a href="https://linkedin.com" class="social-link" target="_blank" rel="noopener">LINKEDIN</a>
+            <span class="social-sep">/</span>
+            <a href="https://github.com" class="social-link" target="_blank" rel="noopener">GITHUB</a>
+          </div>
+        </div>
+
+        <!-- Global Master Footer -->
+        <footer class="master-site-footer">
+          <div class="footer-left">
+            <span class="footer-brand">SHRUTHI SUNDAR</span>
+          </div>
+          <div class="footer-center">
+            <span class="footer-meta-tag">PRODUCT · TECHNOLOGY · DATA · SYSTEMS</span>
+          </div>
+          <div class="footer-right">
+            <span class="footer-copy">© 2026</span>
+            <a href="#heroStage" class="back-to-top-btn">Back to top ↑</a>
+          </div>
+        </footer>
+
+      </div>
+    </section>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
