@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Shruthi Sundar — Product Thinker × Engineer × Builder</title>
   <meta name="description" content="Cinematic interactive portfolio of Shruthi Sundar. Product thinker, engineer, and builder exploring the intersection of human insight and machine systems.">
+  
+  <!-- Theme Color for Mobile Browser Navigation Bars -->
+  <meta name="theme-color" content="#050505">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   
   <!-- Premium Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,10 +26,29 @@
     <div class="subtle-grain"></div>
   </div>
 
+  <!-- Mobile Fullscreen Navigation Overlay -->
+  <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+    <div class="mobile-nav-content">
+      <nav class="mobile-nav-menu">
+        <a href="#about" class="mobile-nav-link"><span class="m-num">01</span> MANIFESTO</a>
+        <a href="#work" class="mobile-nav-link"><span class="m-num">02</span> SELECTED WORK</a>
+        <a href="#case-study" class="mobile-nav-link"><span class="m-num">03</span> CASE STUDY</a>
+        <a href="#thinking" class="mobile-nav-link"><span class="m-num">04</span> PRODUCT THINKING</a>
+        <a href="#languages" class="mobile-nav-link"><span class="m-num">05</span> DUAL DISCIPLINE</a>
+        <a href="#experience" class="mobile-nav-link"><span class="m-num">06</span> EXPERIENCE</a>
+        <a href="#beyond" class="mobile-nav-link"><span class="m-num">07</span> BEYOND WORK</a>
+        <a href="#contact" class="mobile-nav-link"><span class="m-num">08</span> CONTACT</a>
+      </nav>
+      <div class="mobile-nav-footer">
+        <span class="mono-meta">SHRUTHI SUNDAR // 2026</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Global Hero Wrapper (Monumental Cinematic Stage with Depth Layering) -->
   <div class="hero-stage" id="heroStage">
     
-    <!-- Minimalist Top Navigation -->
+    <!-- Top Navigation with Mobile Hamburger Trigger -->
     <header class="top-nav" id="topNav">
       <div class="nav-brand">
         <a href="#heroStage" class="brand-link">
@@ -46,6 +69,12 @@
         <a href="#experience" class="nav-item">EXPERIENCE</a>
         <a href="#contact" class="nav-item">CONTACT</a>
       </nav>
+
+      <!-- Mobile Menu Button (Visible only on mobile/tablet) -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <span class="menu-bar bar-1"></span>
+        <span class="menu-bar bar-2"></span>
+      </button>
     </header>
 
     <!-- Main Cinematic Centerpiece Stage -->
@@ -97,6 +126,13 @@
 
       <!-- LAYER 4: Bottom Floating Statement & Action Controls -->
       <div class="hero-floating-controls">
+        
+        <!-- Subtle Interactive Touch Hint for Mobile Visitors -->
+        <div class="touch-hint-pill" id="touchHintPill">
+          <span class="touch-hint-dot"></span>
+          <span class="touch-hint-text">TOUCH &amp; DRAG TO REVEAL · HOLD TO TRANSFORM</span>
+        </div>
+
         <div class="hero-quote-inline">
           <span class="quote-main">I notice friction.</span>
           <span class="quote-sub">I build things.</span>
@@ -122,10 +158,10 @@
         <span class="mono-meta">EST. 2026 // SAN FRANCISCO & GLOBAL</span>
       </div>
       <div class="footer-col-center">
-        <span class="interaction-hint">HOVER TO REVEAL ROBOT · HOLD TO TRANSFORM</span>
+        <span class="interaction-hint">INTERACTIVE SPECIMEN // 1:1 LAYER COMPOSITING</span>
       </div>
       <div class="footer-col-right">
-        <span class="mono-meta">DUAL SPECIMEN // 1:1 LAYER COMPOSITING</span>
+        <span class="mono-meta">DUAL IDENTITY ENGINE</span>
       </div>
     </footer>
 
