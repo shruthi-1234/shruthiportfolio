@@ -377,6 +377,10 @@ body.nav-locked {
    MAIN CINEMATIC STAGE (TALL DOMINANT CENTERPIECE PORTRAIT)
    ========================================================================== */
 
+/* ==========================================================================
+   MAIN CINEMATIC STAGE (TALL DOMINANT CENTERPIECE PORTRAIT)
+   ========================================================================== */
+
 .hero-cinematic-stage {
   position: relative;
   flex: 1;
@@ -385,15 +389,15 @@ body.nav-locked {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 8px 0;
+  padding: 12px 0;
 }
 
 /* LAYER 1: Dot Matrix & Monumental Kinetic Typography */
 .hero-bg-text-layer {
   position: absolute;
-  top: 36%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%) translate(var(--bg-parallax-x, 0px), var(--bg-parallax-y, 0px));
   z-index: 1;
@@ -409,12 +413,12 @@ body.nav-locked {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 340px;
-  height: 280px;
+  width: clamp(380px, 45vw, 680px);
+  height: clamp(300px, 40vh, 480px);
   background-image: radial-gradient(rgba(70, 110, 190, 0.24) 1.5px, transparent 1.5px);
-  background-size: 16px 16px;
+  background-size: 18px 18px;
   pointer-events: none;
-  opacity: 0.75;
+  opacity: 0.8;
 }
 
 .bg-title-stacked {
@@ -430,7 +434,7 @@ body.nav-locked {
 
 .bg-line {
   font-family: var(--font-display);
-  font-size: clamp(68px, 14vw, 190px);
+  font-size: clamp(80px, 15vw, 210px);
   font-weight: 800;
   letter-spacing: -0.04em;
   text-transform: uppercase;
@@ -446,7 +450,7 @@ body.nav-locked {
   -webkit-text-stroke: 1.5px rgba(244, 240, 232, 0.12);
 }
 
-/* LAYER 2: Dominant Centerpiece Portrait (Significantly Bigger & Vertical) */
+/* LAYER 2: Dominant Centerpiece Portrait (Significantly Bigger on Laptop/Desktop) */
 .hero-portrait-stage {
   position: relative;
   z-index: 5;
@@ -459,10 +463,10 @@ body.nav-locked {
 
 .hero-portrait-container {
   position: relative;
-  height: clamp(380px, 48vh, 540px);
+  height: clamp(460px, 60vh, 680px);
   aspect-ratio: 380 / 511;
   width: auto;
-  max-width: 90vw;
+  max-width: clamp(380px, 35vw, 540px);
   margin: 0 auto;
   user-select: none;
   -webkit-user-select: none;
@@ -470,7 +474,7 @@ body.nav-locked {
   -webkit-touch-callout: none;
   cursor: crosshair;
   background: transparent;
-  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.98));
+  filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.98));
 }
 
 .hero-image {
@@ -529,13 +533,13 @@ body.nav-locked {
   position: relative;
   z-index: 8;
   width: 100%;
-  max-width: 680px;
-  margin: 12px auto 0 auto;
+  max-width: 720px;
+  margin: 16px auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  gap: 14px;
+  gap: 16px;
   padding: 0 4px;
 }
 
