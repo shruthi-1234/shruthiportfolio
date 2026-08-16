@@ -1,14 +1,14 @@
 /* ==========================================================================
    SHRUTHI SUNDAR — LUXURY EDITORIAL PORTFOLIO
-   Design System: Monumental Centered Depth Hero + Full Mobile Optimization
+   Design System: Monumental Centered Depth Hero (Exact chandan.dev composition)
    ========================================================================== */
 
 :root {
   /* Core Color Palette */
-  --bg-studio: #050505;
+  --bg-studio: #000000;
   --bg-surface: #0B0A09;
   --bg-surface-elevated: #11100F;
-  --bg-surface-glass: rgba(18, 17, 16, 0.7);
+  --bg-surface-glass: rgba(18, 17, 16, 0.75);
   
   --text-titanium: #F4F0E8;
   --text-muted: #8E877E;
@@ -21,6 +21,7 @@
   --accent-crimson-glow: rgba(182, 58, 69, 0.22);
   --accent-warm-gold: #D8B89C;
   --accent-warm-gold-dim: rgba(216, 184, 156, 0.2);
+  --accent-future-amber: #E87A24;
   
   /* Borders & Dividers */
   --border-subtle: rgba(244, 240, 232, 0.08);
@@ -109,8 +110,8 @@ body.nav-locked {
     ellipse at center,
     rgba(24, 22, 20, 0.45) 0%,
     rgba(12, 10, 9, 0.75) 50%,
-    rgba(5, 5, 5, 0.98) 80%,
-    #050505 100%
+    rgba(0, 0, 0, 0.98) 80%,
+    #000000 100%
   );
   border-radius: 50%;
   filter: blur(80px);
@@ -137,7 +138,7 @@ body.nav-locked {
 .subtle-grain {
   position: absolute;
   inset: 0;
-  opacity: 0.022;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
@@ -148,7 +149,7 @@ body.nav-locked {
 .mobile-nav-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(5, 5, 5, 0.96);
+  background: rgba(0, 0, 0, 0.96);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   z-index: 100;
@@ -172,8 +173,26 @@ body.nav-locked {
   max-width: 360px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 36px;
   text-align: left;
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mobile-nav-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
 }
 
 .mobile-nav-menu {
@@ -185,7 +204,7 @@ body.nav-locked {
 .mobile-nav-link {
   text-decoration: none;
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--text-muted);
@@ -213,43 +232,8 @@ body.nav-locked {
   border-top: 1px solid var(--border-subtle);
 }
 
-/* Hamburger Menu Button */
-.mobile-menu-btn {
-  display: none;
-  background: rgba(244, 240, 232, 0.06);
-  border: 1px solid var(--border-subtle);
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  cursor: pointer;
-  padding: 12px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  position: relative;
-  z-index: 110;
-  touch-action: manipulation;
-}
-
-.menu-bar {
-  width: 100%;
-  height: 2px;
-  background: var(--text-titanium);
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.mobile-menu-btn.is-active .bar-1 {
-  transform: translateY(4px) rotate(45deg);
-}
-
-.mobile-menu-btn.is-active .bar-2 {
-  transform: translateY(-4px) rotate(-45deg);
-}
-
 /* ==========================================================================
-   MONUMENTAL CINEMATIC HERO (NAME BEHIND DOMINANT CENTERED PORTRAIT)
+   HERO NAVIGATION (BRAND MONOGRAM PILL + DROPDOWN)
    ========================================================================== */
 
 .hero-stage {
@@ -261,7 +245,7 @@ body.nav-locked {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 28px 48px 20px 48px;
+  padding: 24px 36px 16px 36px;
   overflow: hidden;
 }
 
@@ -274,19 +258,48 @@ body.nav-locked {
   z-index: 30;
 }
 
-.brand-link {
-  text-decoration: none;
-  display: flex;
+/* Brand Monogram Pill (chandan.dev style) */
+.brand-pill-link {
+  display: inline-flex;
   align-items: center;
+  gap: 12px;
+  text-decoration: none;
 }
 
-.brand-name {
+.brand-monogram-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(244, 240, 232, 0.04);
+  border: 1.5px solid rgba(244, 240, 232, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.monogram-text {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-titanium);
+}
+
+.brand-title-desktop {
+  font-family: var(--font-display);
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.16em;
   color: var(--text-titanium);
   text-transform: uppercase;
+}
+
+.brand-pill-link:hover .brand-monogram-circle {
+  border-color: var(--accent-warm-gold);
+  transform: scale(1.04);
 }
 
 .nav-meta .meta-tag {
@@ -336,7 +349,32 @@ body.nav-locked {
   width: 100%;
 }
 
-/* Main Cinematic Stage Wrapper */
+/* Mobile Dropdown Trigger Button */
+.mobile-menu-trigger {
+  display: none;
+  background: rgba(244, 240, 232, 0.04);
+  border: 1px solid var(--border-subtle);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--text-titanium);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  touch-action: manipulation;
+  transition: border-color 0.3s ease;
+}
+
+.mobile-menu-trigger:hover, .mobile-menu-trigger:active {
+  border-color: var(--text-titanium);
+}
+
+/* ==========================================================================
+   MAIN CINEMATIC STAGE
+   ========================================================================== */
+
 .hero-cinematic-stage {
   position: relative;
   flex: 1;
@@ -345,16 +383,15 @@ body.nav-locked {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1440px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 10px 0;
-  min-height: 540px;
 }
 
-/* LAYER 1: Monumental Background Typography (Behind Image) */
+/* LAYER 1: Dot Matrix & Monumental Kinetic Typography */
 .hero-bg-text-layer {
   position: absolute;
-  top: 48%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%) translate(var(--bg-parallax-x, 0px), var(--bg-parallax-y, 0px));
   z-index: 1;
@@ -365,6 +402,19 @@ body.nav-locked {
   will-change: transform;
 }
 
+.hero-dot-matrix {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 240px;
+  background-image: radial-gradient(rgba(70, 110, 190, 0.22) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 .bg-title-stacked {
   display: flex;
   flex-direction: column;
@@ -372,88 +422,29 @@ body.nav-locked {
   justify-content: center;
   gap: 0;
   line-height: 0.82;
+  position: relative;
+  z-index: 2;
 }
 
 .bg-line {
   font-family: var(--font-display);
-  font-size: clamp(72px, 15.5vw, 220px);
+  font-size: clamp(68px, 14vw, 190px);
   font-weight: 800;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   display: block;
-  transition: transform 0.2s ease-out;
 }
 
 .bg-line.line-1 {
   color: rgba(244, 240, 232, 0.08);
-  animation: textFloat1 10s ease-in-out infinite alternate;
 }
 
 .bg-line.line-2 {
   color: rgba(244, 240, 232, 0.04);
   -webkit-text-stroke: 1.5px rgba(244, 240, 232, 0.12);
-  animation: textFloat2 12s ease-in-out infinite alternate;
 }
 
-@keyframes textFloat1 {
-  0% { transform: translateY(0px) scale(1); }
-  100% { transform: translateY(-8px) scale(1.015); }
-}
-
-@keyframes textFloat2 {
-  0% { transform: translateY(0px) scale(1); }
-  100% { transform: translateY(8px) scale(0.985); }
-}
-
-/* LAYER 2: Floating Header Meta */
-.hero-floating-meta {
-  position: relative;
-  z-index: 8;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: -16px;
-  text-align: center;
-}
-
-.hero-meta-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(244, 240, 232, 0.05);
-  border: 1px solid var(--border-subtle);
-  padding: 6px 16px;
-  border-radius: 100px;
-  margin-bottom: 8px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.beacon-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--accent-crimson);
-  border-radius: 50%;
-  box-shadow: 0 0 8px var(--accent-crimson);
-}
-
-.meta-badge-text {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.16em;
-  color: var(--text-muted);
-}
-
-.hero-floating-role {
-  font-family: var(--font-sans);
-  font-size: clamp(14px, 1.6vw, 19px);
-  font-weight: 400;
-  color: var(--accent-warm-gold);
-  letter-spacing: 0.03em;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-}
-
-/* LAYER 3: Dominant Centerpiece Portrait (Overlapping in Front of the Name) */
+/* LAYER 2: Dominant Centerpiece Portrait (Overlapping in Front of Text) */
 .hero-portrait-stage {
   position: relative;
   z-index: 5;
@@ -467,7 +458,7 @@ body.nav-locked {
 .hero-portrait-container {
   position: relative;
   width: 100%;
-  max-width: clamp(560px, 68vw, 980px);
+  max-width: clamp(540px, 64vw, 860px);
   aspect-ratio: 1024 / 571;
   margin: 0 auto;
   user-select: none;
@@ -476,7 +467,7 @@ body.nav-locked {
   -webkit-touch-callout: none;
   cursor: crosshair;
   background: transparent;
-  filter: drop-shadow(0 35px 70px rgba(0, 0, 0, 0.98));
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.98));
 }
 
 .hero-image {
@@ -500,7 +491,7 @@ body.nav-locked {
   opacity: 1;
 }
 
-/* Soft Organic Feathered Reveal Mask (No Visible Circle/Ring) */
+/* Soft Organic Feathered Reveal Mask (Neck-Down Cybernetic Chassis) */
 .robot-reveal-mask {
   position: absolute;
   inset: 0;
@@ -530,155 +521,110 @@ body.nav-locked {
   will-change: mask-image, -webkit-mask-image;
 }
 
-/* LAYER 4: Floating Statement & Action Controls (Below Portrait) */
-.hero-floating-controls {
+/* LAYER 3: Hero Statement & Hold Action (Exact chandan.dev composition) */
+.hero-statement-section {
   position: relative;
   z-index: 8;
+  width: 100%;
+  max-width: 680px;
+  margin: 16px auto 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 18px;
-  margin-top: -12px;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
+  gap: 16px;
+  padding: 0 4px;
 }
 
-/* Touch Hint Pill (Active primarily on touch devices) */
-.touch-hint-pill {
+.hero-statement-text {
+  font-family: var(--font-sans);
+  font-size: clamp(17px, 2vw, 23px);
+  font-weight: 400;
+  line-height: 1.42;
+  color: var(--text-titanium);
+  letter-spacing: -0.01em;
+}
+
+.hero-hold-action-row {
+  display: flex;
+  align-items: center;
+}
+
+.hold-action-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   background: rgba(244, 240, 232, 0.04);
-  border: 1px solid var(--border-subtle);
-  padding: 5px 14px;
+  border: 1px solid rgba(244, 240, 232, 0.12);
+  padding: 8px 18px;
   border-radius: 100px;
-  backdrop-filter: blur(8px);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.touch-hint-dot {
-  width: 5px;
-  height: 5px;
-  background: var(--accent-warm-gold);
+.hold-action-pill:hover {
+  border-color: var(--accent-future-amber);
+  background: rgba(232, 122, 36, 0.08);
+}
+
+.hold-action-pill:active, .hold-action-pill.is-active {
+  transform: scale(0.97);
+  border-color: var(--accent-future-amber);
+  background: rgba(232, 122, 36, 0.15);
+}
+
+.hold-pulsing-dot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  animation: pulseDot 2s infinite ease-in-out;
+  background: var(--accent-future-amber);
+  box-shadow: 0 0 8px var(--accent-future-amber);
+  animation: pulseAmber 1.8s infinite ease-in-out;
 }
 
-@keyframes pulseDot {
-  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+@keyframes pulseAmber {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
   50% { opacity: 1; transform: scale(1.3); }
 }
 
-.touch-hint-text {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  letter-spacing: 0.14em;
-  color: var(--text-muted);
-}
-
-.hero-quote-inline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
-}
-
-.quote-main {
+.hold-btn-text {
   font-family: var(--font-sans);
-  font-size: 17px;
+  font-size: 13.5px;
   font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.01em;
+}
+
+.hold-action-pill:hover .hold-btn-text,
+.hold-action-pill:active .hold-btn-text,
+.hold-action-pill.is-active .hold-btn-text {
   color: var(--text-titanium);
 }
 
-.quote-sub {
-  font-family: var(--font-serif);
-  font-size: 24px;
-  font-style: italic;
-  color: var(--accent-warm-gold);
-}
-
-.centered-actions {
-  justify-content: center;
-}
-
-.hero-actions-row {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.hero-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  background: var(--text-titanium);
-  color: var(--bg-studio);
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  padding: 13px 24px;
-  border-radius: 4px;
-  transition: background 0.3s ease, transform 0.3s ease;
-  touch-action: manipulation;
-}
-
-.hero-btn-primary:hover {
-  background: var(--accent-warm-gold);
-  transform: translateY(-2px);
-}
-
-.hero-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  background: rgba(11, 10, 9, 0.7);
-  color: var(--text-titanium);
-  border: 1px solid var(--border-subtle);
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  padding: 13px 24px;
-  border-radius: 4px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  transition: border-color 0.3s ease, color 0.3s ease;
-  touch-action: manipulation;
-}
-
-.hero-btn-secondary:hover {
-  border-color: var(--text-titanium);
-  color: var(--accent-warm-gold);
-}
-
-.hero-footer {
+/* Hero Footer Bar (Exact Planet Earth Ticker) */
+.hero-footer-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-top: 16px;
-  border-top: 1px solid rgba(244, 240, 232, 0.06);
+  padding-top: 14px;
+  border-top: 1px solid rgba(244, 240, 232, 0.08);
   position: relative;
   z-index: 30;
 }
 
-.mono-meta {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
+.bar-meta-text {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
   color: var(--text-dim);
-  text-transform: uppercase;
-}
-
-.interaction-hint {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.16em;
-  color: var(--text-muted);
-  text-transform: uppercase;
 }
 
 /* ==========================================================================
@@ -749,10 +695,7 @@ body.nav-locked {
   transform: translateY(0);
 }
 
-/* ==========================================================================
-   1. SECTION: ABOUT / MANIFESTO
-   ========================================================================== */
-
+/* 1. SECTION: ABOUT */
 .section-about {
   padding-top: 160px;
   padding-bottom: 160px;
@@ -815,10 +758,7 @@ body.nav-locked {
   color: var(--text-dim);
 }
 
-/* ==========================================================================
-   2. SECTION: SELECTED WORK
-   ========================================================================== */
-
+/* 2. SECTION: SELECTED WORK */
 .section-header-block {
   margin-bottom: 72px;
 }
@@ -1097,10 +1037,7 @@ body.nav-locked {
   color: var(--text-titanium);
 }
 
-/* ==========================================================================
-   3. SECTION: CASE STUDY — LIQUIDITY / RLT
-   ========================================================================== */
-
+/* 3. SECTION: CASE STUDY */
 .section-case-study {
   background: #030303;
 }
@@ -1296,10 +1233,7 @@ body.nav-locked {
   opacity: 0.6;
 }
 
-/* ==========================================================================
-   4. SECTION: PRODUCT THINKING
-   ========================================================================== */
-
+/* 4. SECTION: PRODUCT THINKING */
 .thinking-headline {
   font-family: var(--font-display);
   font-size: clamp(32px, 5vw, 64px);
@@ -1353,10 +1287,7 @@ body.nav-locked {
   color: var(--text-muted);
 }
 
-/* ==========================================================================
-   5. SECTION: ENGINEERING × PRODUCT (DUAL DISCIPLINE)
-   ========================================================================== */
-
+/* 5. SECTION: DUAL DISCIPLINE */
 .languages-header {
   margin-bottom: 72px;
   max-width: 860px;
@@ -1487,10 +1418,7 @@ body.nav-locked {
   text-transform: uppercase;
 }
 
-/* ==========================================================================
-   6. SECTION: EXPERIENCE TIMELINE
-   ========================================================================== */
-
+/* 6. SECTION: EXPERIENCE */
 .experience-timeline {
   display: flex;
   flex-direction: column;
@@ -1573,10 +1501,7 @@ body.nav-locked {
   font-size: 12px;
 }
 
-/* ==========================================================================
-   7. SECTION: IMPACT & NUMBERS
-   ========================================================================== */
-
+/* 7. SECTION: IMPACT */
 .section-impact {
   background: #030303;
   padding: 160px 0;
@@ -1632,10 +1557,7 @@ body.nav-locked {
   color: var(--text-muted);
 }
 
-/* ==========================================================================
-   8. SECTION: BEYOND WORK
-   ========================================================================== */
-
+/* 8. SECTION: BEYOND WORK */
 .beyond-headline {
   font-family: var(--font-display);
   font-size: clamp(30px, 4.5vw, 56px);
@@ -1686,10 +1608,7 @@ body.nav-locked {
   color: var(--text-muted);
 }
 
-/* ==========================================================================
-   9. SECTION: CURRENTLY EXPLORING
-   ========================================================================== */
-
+/* 9. SECTION: CURRENTLY EXPLORING */
 .exploring-card {
   background: linear-gradient(135deg, #0F0D0C 0%, #060505 100%);
   border: 1px solid rgba(182, 58, 69, 0.25);
@@ -1748,13 +1667,10 @@ body.nav-locked {
   );
 }
 
-/* ==========================================================================
-   10. SECTION: CONTACT / FINAL CTA & MASTER FOOTER
-   ========================================================================== */
-
+/* 10. SECTION: CONTACT */
 .section-contact {
   padding: 160px 0 60px 0;
-  background: #020202;
+  background: #000000;
 }
 
 .closing-cta-block {
@@ -1874,12 +1790,12 @@ body.nav-locked {
 }
 
 /* ==========================================================================
-   ROBUST RESPONSIVE BREAKPOINTS (DESKTOP, TABLET & MOBILE PHONES)
+   MOBILE & TABLET RESPONSIVE STYLING (MATCHING SCREENSHOT)
    ========================================================================== */
 
 @media (max-width: 1024px) {
   .hero-stage {
-    padding: 24px 32px 18px 32px;
+    padding: 24px 28px 16px 28px;
   }
   .section-container {
     padding: 0 36px;
@@ -1912,38 +1828,49 @@ body.nav-locked {
 }
 
 @media (max-width: 860px) {
-  .nav-links, .nav-meta {
+  .nav-links, .nav-meta, .brand-title-desktop {
     display: none;
   }
-  .mobile-menu-btn {
+  .mobile-menu-trigger {
     display: flex;
   }
   .hero-stage {
     min-height: 100vh;
     min-height: 100svh;
-    padding: 20px 20px 16px 20px;
+    padding: 20px 20px 14px 20px;
   }
   .hero-cinematic-stage {
     min-height: 480px;
-    padding: 8px 0;
+    padding: 6px 0;
+  }
+  .hero-dot-matrix {
+    width: 240px;
+    height: 180px;
   }
   .hero-bg-text-layer {
-    top: 48%;
+    top: 36%;
   }
   .bg-line {
-    font-size: clamp(54px, 16vw, 130px);
+    font-size: clamp(52px, 15vw, 110px);
   }
   .hero-portrait-container {
-    max-width: clamp(340px, 86vw, 560px);
+    max-width: 90vw;
+  }
+  .hero-statement-section {
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 0 2px;
+    gap: 14px;
+  }
+  .hero-statement-text {
+    font-size: clamp(17px, 4.6vw, 21px);
+    line-height: 1.4;
   }
   .editorial-section {
     padding: 90px 0;
   }
   .section-container {
     padding: 0 20px;
-  }
-  .hero-footer .footer-col-center {
-    display: none;
   }
   .metric-compare-box {
     grid-template-columns: 1fr;
@@ -1970,67 +1897,34 @@ body.nav-locked {
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 480px) {
   .hero-stage {
-    padding: 16px 16px 14px 16px;
+    padding: 16px 18px 12px 18px;
   }
   .hero-cinematic-stage {
     min-height: 440px;
   }
   .bg-line {
-    font-size: clamp(46px, 15.5vw, 92px);
-  }
-  .hero-floating-meta {
-    margin-bottom: -8px;
-  }
-  .hero-floating-role {
-    font-size: 14px;
+    font-size: clamp(44px, 14vw, 84px);
   }
   .hero-portrait-container {
-    max-width: 94vw;
+    max-width: 92vw;
   }
-  .hero-floating-controls {
-    margin-top: -6px;
-    gap: 14px;
+  .hero-statement-section {
+    margin-top: 14px;
+    gap: 12px;
   }
-  .quote-main {
-    font-size: 15px;
+  .hero-statement-text {
+    font-size: 18px;
+    line-height: 1.38;
   }
-  .quote-sub {
-    font-size: 20px;
+  .hold-action-pill {
+    padding: 8px 16px;
   }
-  .hero-actions-row {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
+  .hold-btn-text {
+    font-size: 13px;
   }
-  .hero-btn-primary, .hero-btn-secondary {
-    width: 100%;
-    justify-content: center;
-    padding: 14px 20px;
-    font-size: 12px;
-  }
-  .editorial-project-block {
-    padding: 32px 20px;
-  }
-  .discipline-side {
-    padding: 36px 20px;
-  }
-  .timeline-entry {
-    padding: 32px 20px;
-  }
-  .impact-stat-card {
-    padding: 36px 24px;
-  }
-  .exploring-card {
-    padding: 36px 20px;
-  }
-  .closing-cta-block {
-    margin-bottom: 80px;
-  }
-  .cta-button-main {
-    width: 100%;
-    justify-content: center;
-    padding: 16px 24px;
+  .bar-meta-text {
+    font-size: 11px;
   }
 }

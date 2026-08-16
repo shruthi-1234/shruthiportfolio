@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Shruthi Sundar — Product Thinker × Engineer × Builder</title>
-  <meta name="description" content="Cinematic interactive portfolio of Shruthi Sundar. Product thinker, engineer, and builder exploring the intersection of human insight and machine systems.">
+  <meta name="description" content="Cinematic interactive portfolio of Shruthi Sundar. Software engineer turned product thinker, crafting experiences for the future.">
   
-  <!-- Theme Color for Mobile Browser Navigation Bars -->
-  <meta name="theme-color" content="#050505">
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   
   <!-- Premium Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
 </head>
@@ -29,6 +29,12 @@
   <!-- Mobile Fullscreen Navigation Overlay -->
   <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
     <div class="mobile-nav-content">
+      <div class="mobile-nav-header">
+        <div class="brand-monogram-circle">
+          <span>SS</span>
+        </div>
+        <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">✕</button>
+      </div>
       <nav class="mobile-nav-menu">
         <a href="#about" class="mobile-nav-link"><span class="m-num">01</span> MANIFESTO</a>
         <a href="#work" class="mobile-nav-link"><span class="m-num">02</span> SELECTED WORK</a>
@@ -45,21 +51,26 @@
     </div>
   </div>
 
-  <!-- Global Hero Wrapper (Monumental Cinematic Stage with Depth Layering) -->
+  <!-- Global Hero Wrapper -->
   <div class="hero-stage" id="heroStage">
     
-    <!-- Top Navigation with Mobile Hamburger Trigger -->
+    <!-- Top Navigation Header -->
     <header class="top-nav" id="topNav">
-      <div class="nav-brand">
-        <a href="#heroStage" class="brand-link">
-          <span class="brand-name">SHRUTHI SUNDAR</span>
-        </a>
-      </div>
+      
+      <!-- Brand Monogram Pill -->
+      <a href="#heroStage" class="brand-pill-link">
+        <div class="brand-monogram-circle">
+          <span class="monogram-text">SS</span>
+        </div>
+        <span class="brand-title-desktop">SHRUTHI SUNDAR</span>
+      </a>
 
+      <!-- Desktop Metadata -->
       <div class="nav-meta">
         <span class="meta-tag">PRODUCT × TECHNOLOGY × DATA × AI</span>
       </div>
 
+      <!-- Desktop Links -->
       <nav class="nav-links">
         <a href="#about" class="nav-item">ABOUT</a>
         <a href="#work" class="nav-item">WORK</a>
@@ -70,34 +81,28 @@
         <a href="#contact" class="nav-item">CONTACT</a>
       </nav>
 
-      <!-- Mobile Menu Button (Visible only on mobile/tablet) -->
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
-        <span class="menu-bar bar-1"></span>
-        <span class="menu-bar bar-2"></span>
+      <!-- Mobile Dropdown Chevron Menu Trigger -->
+      <button class="mobile-menu-trigger" id="mobileMenuBtn" aria-label="Toggle Navigation Menu" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
       </button>
+
     </header>
 
     <!-- Main Cinematic Centerpiece Stage -->
     <main class="hero-cinematic-stage" id="heroCinematicStage">
       
-      <!-- LAYER 1: Monumental Kinetic Typography SITTING BEHIND THE IMAGE -->
+      <!-- LAYER 1: Dot Matrix & Monumental Kinetic Typography SITTING BEHIND THE IMAGE -->
       <div class="hero-bg-text-layer" id="heroBgTextLayer" aria-hidden="true">
+        <div class="hero-dot-matrix"></div>
         <div class="bg-title-stacked">
           <span class="bg-line line-1">SHRUTHI</span>
           <span class="bg-line line-2">SUNDAR</span>
         </div>
       </div>
 
-      <!-- LAYER 2: Floating Header Meta (Above portrait) -->
-      <div class="hero-floating-meta">
-        <div class="hero-meta-badge">
-          <span class="beacon-dot"></span>
-          <span class="meta-badge-text">PRODUCT × TECHNOLOGY × DATA × AI</span>
-        </div>
-        <p class="hero-floating-role">Product thinker × engineer × builder</p>
-      </div>
-
-      <!-- LAYER 3: Dominant Centerpiece Portrait (Overlapping in Front of the Name) -->
+      <!-- LAYER 2: Centerpiece Portrait (Overlapping in Front of the Name) -->
       <div class="hero-portrait-stage">
         <div class="hero-portrait-container" id="heroPortraitContainer">
           
@@ -110,11 +115,11 @@
             draggable="false"
           >
 
-          <!-- TOP LAYER: Robot Transformation (Revealed via soft mask on interaction) -->
+          <!-- TOP LAYER: Neck-Down Robot Chassis (Face stays 100% human, revealed on hover/touch) -->
           <div class="robot-reveal-mask" id="robotRevealMask">
             <img 
               src="assets/shruthi-robot.png" 
-              alt="Shruthi Sundar — Robot" 
+              alt="Shruthi Sundar — Robot Chassis" 
               class="hero-image robot-top" 
               id="robotTopImg"
               draggable="false"
@@ -124,44 +129,31 @@
         </div>
       </div>
 
-      <!-- LAYER 4: Bottom Floating Statement & Action Controls -->
-      <div class="hero-floating-controls">
+      <!-- LAYER 3: Hero Statement & Interactive Hold Pill (Exact chandan.dev composition) -->
+      <div class="hero-statement-section">
         
-        <!-- Subtle Interactive Touch Hint for Mobile Visitors -->
-        <div class="touch-hint-pill" id="touchHintPill">
-          <span class="touch-hint-dot"></span>
-          <span class="touch-hint-text">TOUCH &amp; DRAG TO REVEAL · HOLD TO TRANSFORM</span>
+        <h1 class="hero-statement-text">
+          a software engineer turned product manager, crafting experiences for the future.
+        </h1>
+
+        <div class="hero-hold-action-row">
+          <button class="hold-action-pill" id="holdActionPill" type="button" aria-label="Hold to see the future">
+            <span class="hold-pulsing-dot"></span>
+            <span class="hold-btn-text">hold to see the future</span>
+          </button>
         </div>
 
-        <div class="hero-quote-inline">
-          <span class="quote-main">I notice friction.</span>
-          <span class="quote-sub">I build things.</span>
-        </div>
-
-        <div class="hero-actions-row centered-actions">
-          <a href="#work" class="hero-btn-primary">
-            <span>EXPLORE ARCHIVE</span>
-            <span class="btn-arrow">↓</span>
-          </a>
-          <a href="#contact" class="hero-btn-secondary">
-            <span>GET IN TOUCH</span>
-            <span class="btn-arrow">↗</span>
-          </a>
-        </div>
       </div>
 
     </main>
 
-    <!-- Discreet Editorial Footer Bar -->
-    <footer class="hero-footer">
-      <div class="footer-col-left">
-        <span class="mono-meta">EST. 2026 // SAN FRANCISCO & GLOBAL</span>
+    <!-- Hero Footer Bar (Exact Planet Earth Ticker) -->
+    <footer class="hero-footer-bar">
+      <div class="footer-bar-col left">
+        <span class="bar-meta-text">Planet Earth-616</span>
       </div>
-      <div class="footer-col-center">
-        <span class="interaction-hint">INTERACTIVE SPECIMEN // 1:1 LAYER COMPOSITING</span>
-      </div>
-      <div class="footer-col-right">
-        <span class="mono-meta">DUAL IDENTITY ENGINE</span>
+      <div class="footer-bar-col right">
+        <span class="bar-meta-text">Y2026 - 12°58'12"N, 77°38'27"E</span>
       </div>
     </footer>
 

@@ -2,13 +2,11 @@
  * SHRUTHI SUNDAR — CINEMATIC EDITORIAL PORTFOLIO ENGINE
  * 
  * UNIVERSAL INTERACTION ENGINE (DESKTOP & MOBILE COMPATIBLE):
- * - Two 1:1 Aligned Layers: shruthi-human.png (Base) ↔ shruthi-robot.png (Top Reveal)
- * - Monumental typography positioned behind the dominant portrait
- * - Dynamic mouse & device orientation parallax on the background name layer
- * - Soft organic feathered reveal mask (No rings, no circles, no outlines)
+ * - Two 1:1 Aligned Layers: shruthi-human.png (Base) ↔ shruthi-robot.png (Neck-Down Chassis)
+ * - Face is 100% biological human; robot chassis is revealed only from neck down
+ * - Hold to see the future button triggers full chassis transformation
  * - Multi-touch drag tracking with touch-action isolation (iOS Safari & Android Chrome compatible)
- * - Press & Hold progressive expansion to full robot reveal
- * - Zero image translations, 100% static aligned assets
+ * - Mobile gyroscope & desktop mouse parallax
  */
 
 (function () {
@@ -19,21 +17,22 @@
   // =========================================================================
   const portraitContainer = document.getElementById('heroPortraitContainer');
   const bgTextLayer = document.getElementById('heroBgTextLayer');
+  const holdActionPill = document.getElementById('holdActionPill');
 
   // Dynamic Radii based on Screen Size
   function getRevealRadii() {
     const isMobile = window.innerWidth <= 768;
     return {
-      normal: isMobile ? 115 : 165,  // ~230px on mobile, ~330px on desktop
-      hold: isMobile ? 620 : 980      // Full canvas expansion
+      normal: isMobile ? 120 : 165,  // ~240px on mobile, ~330px on desktop
+      hold: isMobile ? 650 : 980      // Full canvas expansion
     };
   }
 
   const LERP_POS = 0.16;                 // Smooth pointer follow inertia
   const LERP_RAD_ENTER = 0.14;           // Smooth radius expansion factor
-  const LERP_RAD_HOLD = 0.055;           // Smooth progressive hold factor
+  const LERP_RAD_HOLD = 0.06;            // Smooth progressive hold factor
   const LERP_RAD_LEAVE = 0.09;          // Smooth relaxation factor when leaving
-  const PARALLAX_MAX_OFFSET = 16;        // Max parallax offset for background text (px)
+  const PARALLAX_MAX_OFFSET = 14;        // Max parallax offset for background text (px)
 
   // Tracking State
   let isHovering = false;
@@ -42,9 +41,9 @@
   
   let stageRect = { left: 0, top: 0, width: 600, height: 334 };
   let targetX = 300;
-  let targetY = 167;
+  let targetY = 240; // Default center around chest/neck area
   let currentX = 300;
-  let currentY = 167;
+  let currentY = 240;
 
   let targetRadius = 0;
   let currentRadius = 0;
@@ -58,9 +57,9 @@
   function updateStageRect() {
     if (portraitContainer) {
       stageRect = portraitContainer.getBoundingClientRect();
-      if (!isHovering && !isTouchActive) {
+      if (!isHovering && !isTouchActive && !isHolding) {
         targetX = stageRect.width / 2;
-        targetY = stageRect.height / 2;
+        targetY = stageRect.height * 0.65; // Focus on torso/chest area
         currentX = targetX;
         currentY = targetY;
       }
@@ -115,7 +114,7 @@
 
   // --- Mouse Pointer Event Handlers (Desktop) ---
   function onPointerMove(e) {
-    if (e.pointerType === 'touch') return; // Handled by dedicated touch handlers
+    if (e.pointerType === 'touch') return;
 
     // Parallax calculation relative to window center
     const winCenterX = window.innerWidth / 2;
@@ -133,7 +132,7 @@
     const relX = e.clientX - stageRect.left;
     const relY = e.clientY - stageRect.top;
 
-    const margin = 40;
+    const margin = 35;
     const isInside = relX >= -margin && relX <= stageRect.width + margin && relY >= -margin && relY <= stageRect.height + margin;
     isHovering = isInside;
 
@@ -178,18 +177,16 @@
     isHovering = true;
     updateTouchCoords(e.touches[0]);
 
-    // Start long-press detection for full robot expansion
     if (touchHoldTimer) clearTimeout(touchHoldTimer);
     touchHoldTimer = setTimeout(() => {
       if (isTouchActive) {
         isHolding = true;
       }
-    }, 240);
+    }, 220);
   }
 
   function onTouchMove(e) {
     if (!isTouchActive || !e.touches || !e.touches.length) return;
-    // Prevent default scroll ONLY when actively dragging across the portrait
     if (e.cancelable) {
       e.preventDefault();
     }
@@ -200,7 +197,6 @@
     if (touchHoldTimer) clearTimeout(touchHoldTimer);
     isHolding = false;
     isTouchActive = false;
-    // Smoothly decay hover state on touch release
     setTimeout(() => {
       if (!isTouchActive) {
         isHovering = false;
@@ -215,13 +211,41 @@
     isHovering = false;
   }
 
+  // --- Hold Button Interactive Trigger ("hold to see the future") ---
+  function initHoldActionPill() {
+    if (!holdActionPill) return;
+
+    function startHold(e) {
+      if (e.cancelable) e.preventDefault();
+      isHolding = true;
+      holdActionPill.classList.add('is-active');
+      if (portraitContainer) {
+        stageRect = portraitContainer.getBoundingClientRect();
+        targetX = stageRect.width / 2;
+        targetY = stageRect.height * 0.65;
+      }
+    }
+
+    function endHold(e) {
+      isHolding = false;
+      holdActionPill.classList.remove('is-active');
+    }
+
+    // Pointer & Touch Listeners for the Hold Pill
+    holdActionPill.addEventListener('mousedown', startHold);
+    window.addEventListener('mouseup', endHold);
+
+    holdActionPill.addEventListener('touchstart', startHold, { passive: false });
+    holdActionPill.addEventListener('touchend', endHold, { passive: true });
+    holdActionPill.addEventListener('touchcancel', endHold, { passive: true });
+  }
+
   // --- Device Orientation Parallax (Mobile Gyroscope) ---
   function onDeviceOrientation(e) {
-    if (window.innerWidth > 768) return; // Only on mobile
+    if (window.innerWidth > 768) return;
     if (e.gamma !== null && e.beta !== null) {
-      // Clamp tilt angles
-      const tiltX = Math.max(-25, Math.min(25, e.gamma)); // Left/Right tilt (-90 to 90)
-      const tiltY = Math.max(-25, Math.min(25, e.beta - 45)); // Forward/Back tilt relative to 45deg viewing
+      const tiltX = Math.max(-25, Math.min(25, e.gamma));
+      const tiltY = Math.max(-25, Math.min(25, e.beta - 45));
       targetParallaxX = (tiltX / 25) * -12;
       targetParallaxY = (tiltY / 25) * -8;
     }
@@ -232,26 +256,30 @@
   // =========================================================================
   function initMobileNav() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNavClose = document.getElementById('mobileNavClose');
     const mobileNavOverlay = document.getElementById('mobileNavOverlay');
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
 
-    if (mobileMenuBtn && mobileNavOverlay) {
-      mobileMenuBtn.addEventListener('click', () => {
-        const isOpen = mobileNavOverlay.classList.toggle('is-open');
-        mobileMenuBtn.setAttribute('aria-expanded', isOpen);
-        mobileMenuBtn.classList.toggle('is-active', isOpen);
-        document.body.classList.toggle('nav-locked', isOpen);
-      });
-
-      mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileNavOverlay.classList.remove('is-open');
-          mobileMenuBtn.classList.remove('is-active');
-          mobileMenuBtn.setAttribute('aria-expanded', 'false');
-          document.body.classList.remove('nav-locked');
-        });
-      });
+    function openNav() {
+      if (mobileNavOverlay) {
+        mobileNavOverlay.classList.add('is-open');
+        document.body.classList.add('nav-locked');
+      }
     }
+
+    function closeNav() {
+      if (mobileNavOverlay) {
+        mobileNavOverlay.classList.remove('is-open');
+        document.body.classList.remove('nav-locked');
+      }
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openNav);
+    if (mobileNavClose) mobileNavClose.addEventListener('click', closeNav);
+
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', closeNav);
+    });
   }
 
   // =========================================================================
@@ -311,7 +339,7 @@
     window.addEventListener('mousedown', onMouseDown);
     window.addEventListener('mouseup', onMouseUp);
 
-    // Mobile Dedicated Touch Events (Non-passive touchmove for gesture control)
+    // Mobile Dedicated Touch Events
     if (portraitContainer) {
       portraitContainer.addEventListener('touchstart', onTouchStart, { passive: true });
       portraitContainer.addEventListener('touchmove', onTouchMove, { passive: false });
@@ -324,11 +352,12 @@
       window.addEventListener('deviceorientation', onDeviceOrientation, { passive: true });
     }
 
-    requestAnimationFrame(heroAnimationLoop);
-
+    initHoldActionPill();
     initMobileNav();
     initScrollReveals();
     initSmoothAnchors();
+
+    requestAnimationFrame(heroAnimationLoop);
   }
 
   if (document.readyState === 'loading') {
