@@ -245,7 +245,7 @@ body.nav-locked {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 24px 36px 16px 36px;
+  padding: 20px 36px 14px 36px;
   overflow: hidden;
 }
 
@@ -258,7 +258,7 @@ body.nav-locked {
   z-index: 30;
 }
 
-/* Brand Monogram Pill (chandan.dev style) */
+/* Brand Monogram Pill */
 .brand-pill-link {
   display: inline-flex;
   align-items: center;
@@ -372,7 +372,7 @@ body.nav-locked {
 }
 
 /* ==========================================================================
-   MAIN CINEMATIC STAGE
+   MAIN CINEMATIC STAGE (TALL DOMINANT CENTERPIECE PORTRAIT)
    ========================================================================== */
 
 .hero-cinematic-stage {
@@ -385,13 +385,13 @@ body.nav-locked {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 0;
+  padding: 8px 0;
 }
 
 /* LAYER 1: Dot Matrix & Monumental Kinetic Typography */
 .hero-bg-text-layer {
   position: absolute;
-  top: 40%;
+  top: 36%;
   left: 50%;
   transform: translate(-50%, -50%) translate(var(--bg-parallax-x, 0px), var(--bg-parallax-y, 0px));
   z-index: 1;
@@ -407,12 +407,12 @@ body.nav-locked {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 320px;
-  height: 240px;
-  background-image: radial-gradient(rgba(70, 110, 190, 0.22) 1.5px, transparent 1.5px);
+  width: 340px;
+  height: 280px;
+  background-image: radial-gradient(rgba(70, 110, 190, 0.24) 1.5px, transparent 1.5px);
   background-size: 16px 16px;
   pointer-events: none;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 .bg-title-stacked {
@@ -444,7 +444,7 @@ body.nav-locked {
   -webkit-text-stroke: 1.5px rgba(244, 240, 232, 0.12);
 }
 
-/* LAYER 2: Dominant Centerpiece Portrait (Overlapping in Front of Text) */
+/* LAYER 2: Dominant Centerpiece Portrait (Significantly Bigger & Vertical) */
 .hero-portrait-stage {
   position: relative;
   z-index: 5;
@@ -457,9 +457,10 @@ body.nav-locked {
 
 .hero-portrait-container {
   position: relative;
-  width: 100%;
-  max-width: clamp(540px, 64vw, 860px);
-  aspect-ratio: 1024 / 571;
+  height: clamp(380px, 48vh, 540px);
+  aspect-ratio: 380 / 511;
+  width: auto;
+  max-width: 90vw;
   margin: 0 auto;
   user-select: none;
   -webkit-user-select: none;
@@ -467,7 +468,7 @@ body.nav-locked {
   -webkit-touch-callout: none;
   cursor: crosshair;
   background: transparent;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.98));
+  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.98));
 }
 
 .hero-image {
@@ -476,7 +477,7 @@ body.nav-locked {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center;
+  object-position: center bottom;
   display: block;
   pointer-events: none;
   user-select: none;
@@ -527,18 +528,18 @@ body.nav-locked {
   z-index: 8;
   width: 100%;
   max-width: 680px;
-  margin: 16px auto 0 auto;
+  margin: 12px auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  gap: 16px;
+  gap: 14px;
   padding: 0 4px;
 }
 
 .hero-statement-text {
   font-family: var(--font-sans);
-  font-size: clamp(17px, 2vw, 23px);
+  font-size: clamp(17px, 2vw, 22px);
   font-weight: 400;
   line-height: 1.42;
   color: var(--text-titanium);
@@ -1790,12 +1791,12 @@ body.nav-locked {
 }
 
 /* ==========================================================================
-   MOBILE & TABLET RESPONSIVE STYLING (MATCHING SCREENSHOT)
+   MOBILE & TABLET RESPONSIVE STYLING (MATCHING EXACT chandan.dev SCALE)
    ========================================================================== */
 
 @media (max-width: 1024px) {
   .hero-stage {
-    padding: 24px 28px 16px 28px;
+    padding: 20px 28px 14px 28px;
   }
   .section-container {
     padding: 0 36px;
@@ -1837,34 +1838,50 @@ body.nav-locked {
   .hero-stage {
     min-height: 100vh;
     min-height: 100svh;
-    padding: 20px 20px 14px 20px;
+    padding: 16px 20px 12px 20px;
   }
   .hero-cinematic-stage {
-    min-height: 480px;
-    padding: 6px 0;
-  }
-  .hero-dot-matrix {
-    width: 240px;
-    height: 180px;
+    min-height: calc(100svh - 90px);
+    justify-content: space-between;
+    padding: 4px 0;
   }
   .hero-bg-text-layer {
-    top: 36%;
+    top: 32%;
+  }
+  .hero-dot-matrix {
+    width: 280px;
+    height: 220px;
   }
   .bg-line {
     font-size: clamp(52px, 15vw, 110px);
   }
-  .hero-portrait-container {
-    max-width: 90vw;
+  
+  /* Portrait container is now big, tall, centered in upper viewport */
+  .hero-portrait-stage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
   }
+  .hero-portrait-container {
+    height: clamp(340px, 48vh, 460px);
+    max-height: 48vh;
+    width: auto;
+    aspect-ratio: 380 / 511;
+    max-width: 88vw;
+    margin: 0 auto;
+  }
+  
   .hero-statement-section {
     max-width: 100%;
-    margin-top: 20px;
-    padding: 0 2px;
-    gap: 14px;
+    margin-top: 8px;
+    padding: 0 4px;
+    gap: 12px;
   }
   .hero-statement-text {
-    font-size: clamp(17px, 4.6vw, 21px);
-    line-height: 1.4;
+    font-size: clamp(17px, 4.4vw, 20px);
+    line-height: 1.38;
   }
   .editorial-section {
     padding: 90px 0;
@@ -1899,27 +1916,29 @@ body.nav-locked {
 
 @media (max-width: 480px) {
   .hero-stage {
-    padding: 16px 18px 12px 18px;
+    padding: 14px 16px 10px 16px;
   }
-  .hero-cinematic-stage {
-    min-height: 440px;
+  .hero-bg-text-layer {
+    top: 30%;
   }
   .bg-line {
-    font-size: clamp(44px, 14vw, 84px);
+    font-size: clamp(48px, 14.5vw, 86px);
   }
   .hero-portrait-container {
-    max-width: 92vw;
+    height: clamp(320px, 48vh, 430px);
+    max-height: 48vh;
+    max-width: 88vw;
   }
   .hero-statement-section {
-    margin-top: 14px;
-    gap: 12px;
+    margin-top: 6px;
+    gap: 10px;
   }
   .hero-statement-text {
     font-size: 18px;
-    line-height: 1.38;
+    line-height: 1.36;
   }
   .hold-action-pill {
-    padding: 8px 16px;
+    padding: 7px 16px;
   }
   .hold-btn-text {
     font-size: 13px;
