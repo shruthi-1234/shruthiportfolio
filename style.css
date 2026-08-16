@@ -377,10 +377,6 @@ body.nav-locked {
    MAIN CINEMATIC STAGE (TALL DOMINANT CENTERPIECE PORTRAIT)
    ========================================================================== */
 
-/* ==========================================================================
-   MAIN CINEMATIC STAGE (TALL DOMINANT CENTERPIECE PORTRAIT)
-   ========================================================================== */
-
 .hero-cinematic-stage {
   position: relative;
   flex: 1;
@@ -389,21 +385,22 @@ body.nav-locked {
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 12px 0;
+  padding: 10px 0;
 }
 
 /* LAYER 1: Dot Matrix & Monumental Kinetic Typography */
 .hero-bg-text-layer {
   position: absolute;
-  top: 40%;
+  top: 38%;
   left: 50%;
   transform: translate(-50%, -50%) translate(var(--bg-parallax-x, 0px), var(--bg-parallax-y, 0px));
   z-index: 1;
   pointer-events: none;
   user-select: none;
   width: 100%;
+  max-width: 900px;
   text-align: center;
   will-change: transform;
 }
@@ -413,12 +410,12 @@ body.nav-locked {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(380px, 45vw, 680px);
-  height: clamp(300px, 40vh, 480px);
-  background-image: radial-gradient(rgba(70, 110, 190, 0.24) 1.5px, transparent 1.5px);
-  background-size: 18px 18px;
+  width: 420px;
+  height: 340px;
+  background-image: radial-gradient(rgba(70, 110, 190, 0.28) 1.5px, transparent 1.5px);
+  background-size: 16px 16px;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
 .bg-title-stacked {
@@ -427,30 +424,30 @@ body.nav-locked {
   align-items: center;
   justify-content: center;
   gap: 0;
-  line-height: 0.82;
+  line-height: 0.84;
   position: relative;
   z-index: 2;
 }
 
 .bg-line {
   font-family: var(--font-display);
-  font-size: clamp(80px, 15vw, 210px);
+  font-size: clamp(54px, 7.5vw, 115px);
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.035em;
   text-transform: uppercase;
   display: block;
 }
 
 .bg-line.line-1 {
-  color: rgba(244, 240, 232, 0.08);
+  color: rgba(244, 240, 232, 0.09);
 }
 
 .bg-line.line-2 {
-  color: rgba(244, 240, 232, 0.04);
-  -webkit-text-stroke: 1.5px rgba(244, 240, 232, 0.12);
+  color: rgba(244, 240, 232, 0.05);
+  -webkit-text-stroke: 1.5px rgba(244, 240, 232, 0.14);
 }
 
-/* LAYER 2: Dominant Centerpiece Portrait (Significantly Bigger on Laptop/Desktop) */
+/* LAYER 2: Dominant Centerpiece Portrait (Significantly Bigger & Vertical) */
 .hero-portrait-stage {
   position: relative;
   z-index: 5;
@@ -463,10 +460,9 @@ body.nav-locked {
 
 .hero-portrait-container {
   position: relative;
-  height: clamp(460px, 60vh, 680px);
+  width: clamp(380px, 32vw, 520px);
   aspect-ratio: 380 / 511;
-  width: auto;
-  max-width: clamp(380px, 35vw, 540px);
+  max-width: 90vw;
   margin: 0 auto;
   user-select: none;
   -webkit-user-select: none;
@@ -533,13 +529,13 @@ body.nav-locked {
   position: relative;
   z-index: 8;
   width: 100%;
-  max-width: 720px;
-  margin: 16px auto 0 auto;
+  max-width: 580px;
+  margin: 14px auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  gap: 16px;
+  gap: 14px;
   padding: 0 4px;
 }
 
