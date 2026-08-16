@@ -1,6 +1,6 @@
 /* ==========================================================================
    SHRUTHI SUNDAR — LUXURY EDITORIAL PORTFOLIO
-   Design System: Monumental Centered Depth Hero (Exact chandan.dev composition)
+   Design System: Monumental Centered Depth Hero + Creative Interactive Animations
    ========================================================================== */
 
 :root {
@@ -25,7 +25,7 @@
   
   /* Borders & Dividers */
   --border-subtle: rgba(244, 240, 232, 0.08);
-  --border-active: rgba(244, 240, 232, 0.18);
+  --border-active: rgba(244, 240, 232, 0.22);
   
   /* Typography */
   --font-display: 'Syne', sans-serif;
@@ -277,7 +277,7 @@ body.nav-locked {
   justify-content: center;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .monogram-text {
@@ -299,7 +299,8 @@ body.nav-locked {
 
 .brand-pill-link:hover .brand-monogram-circle {
   border-color: var(--accent-warm-gold);
-  transform: scale(1.04);
+  transform: scale(1.06);
+  box-shadow: 0 0 16px var(--accent-warm-gold-dim);
 }
 
 .nav-meta .meta-tag {
@@ -364,11 +365,12 @@ body.nav-locked {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   touch-action: manipulation;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.2s ease;
 }
 
 .mobile-menu-trigger:hover, .mobile-menu-trigger:active {
   border-color: var(--text-titanium);
+  transform: scale(1.05);
 }
 
 /* ==========================================================================
@@ -522,7 +524,7 @@ body.nav-locked {
   will-change: mask-image, -webkit-mask-image;
 }
 
-/* LAYER 3: Hero Statement & Hold Action (Exact chandan.dev composition) */
+/* LAYER 3: Hero Statement & Hold Action */
 .hero-statement-section {
   position: relative;
   z-index: 8;
@@ -629,7 +631,7 @@ body.nav-locked {
 }
 
 /* ==========================================================================
-   EDITORIAL SECTION FRAMEWORK (BELOW HERO)
+   CREATIVE EDITORIAL SECTION FRAMEWORK (BELOW HERO)
    ========================================================================== */
 
 .site-content-flow {
@@ -662,6 +664,17 @@ body.nav-locked {
   text-transform: uppercase;
   display: inline-block;
   margin-bottom: 24px;
+  position: relative;
+}
+
+.mono-tag::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 24px;
+  height: 1px;
+  background: var(--accent-crimson);
 }
 
 .section-title {
@@ -678,15 +691,23 @@ body.nav-locked {
   font-style: italic;
   font-weight: 400;
   color: var(--accent-warm-gold);
+  display: inline-block;
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.highlight-serif:hover {
+  color: var(--text-titanium);
+  transform: translateY(-1px);
 }
 
 .highlight-gold {
   color: var(--accent-warm-gold);
 }
 
+/* Staggered Smooth Scroll Reveal */
 .reveal-item {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(32px);
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
@@ -696,7 +717,10 @@ body.nav-locked {
   transform: translateY(0);
 }
 
-/* 1. SECTION: ABOUT */
+/* ==========================================================================
+   1. SECTION: ABOUT / MANIFESTO (INTERACTIVE MAGNETIC PILLS)
+   ========================================================================== */
+
 .section-about {
   padding-top: 160px;
   padding-bottom: 160px;
@@ -742,15 +766,25 @@ body.nav-locked {
   font-size: 11px;
   letter-spacing: 0.16em;
   color: var(--text-titanium);
-  background: rgba(244, 240, 232, 0.05);
+  background: rgba(244, 240, 232, 0.04);
   border: 1px solid var(--border-subtle);
   padding: 6px 14px;
   border-radius: 100px;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.meta-pill:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-color: var(--accent-warm-gold);
+  background: rgba(216, 184, 156, 0.12);
+  box-shadow: 0 4px 16px rgba(216, 184, 156, 0.15);
 }
 
 .meta-pill-sep {
   color: var(--accent-crimson);
   font-size: 12px;
+  animation: pulseDot 2s infinite ease-in-out;
 }
 
 .meta-subtext {
@@ -759,7 +793,10 @@ body.nav-locked {
   color: var(--text-dim);
 }
 
-/* 2. SECTION: SELECTED WORK */
+/* ==========================================================================
+   2. SECTION: SELECTED WORK (3D TILT CARDS + LIVE STREAM TELEMETRY)
+   ========================================================================== */
+
 .section-header-block {
   margin-bottom: 72px;
 }
@@ -768,24 +805,46 @@ body.nav-locked {
   display: flex;
   flex-direction: column;
   gap: 48px;
+  perspective: 1200px;
 }
 
+/* Interactive 3D Tilt Card */
 .editorial-project-block {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 60px;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 56px;
-  transition: border-color 0.4s ease, transform 0.4s ease;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease-out;
   position: relative;
   overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Dynamic Cursor Spotlight Radial Reflection */
+.editorial-project-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 320px at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%),
+    rgba(216, 184, 156, 0.07),
+    transparent 80%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.editorial-project-block:hover::before {
+  opacity: 1;
 }
 
 .editorial-project-block:hover {
   border-color: var(--border-active);
-  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(216, 184, 156, 0.05);
 }
 
 .project-header-meta {
@@ -801,11 +860,12 @@ body.nav-locked {
   font-weight: 600;
   color: var(--accent-warm-gold);
   letter-spacing: 0.14em;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .editorial-project-block:hover .project-index {
-  transform: translateX(4px);
+  transform: translateX(6px);
+  color: var(--text-titanium);
 }
 
 .project-domains {
@@ -847,6 +907,12 @@ body.nav-locked {
   border: 1px solid rgba(216, 184, 156, 0.2);
   padding: 6px 14px;
   border-radius: 4px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.editorial-project-block:hover .metric-badge {
+  transform: translateY(-2px);
+  background: rgba(216, 184, 156, 0.16);
 }
 
 .project-tech-tags {
@@ -862,6 +928,11 @@ body.nav-locked {
   background: rgba(255, 255, 255, 0.03);
   padding: 4px 10px;
   border-radius: 3px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.editorial-project-block:hover .project-tech-tags span {
+  color: var(--text-muted);
 }
 
 .project-action-link {
@@ -882,18 +953,23 @@ body.nav-locked {
 }
 
 .project-action-link:hover .action-arrow {
-  transform: translateX(6px);
+  transform: translateX(8px);
 }
 
 .schematic-card {
   background: #080706;
   border: 1px solid var(--border-subtle);
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 32px;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: border-color 0.3s ease;
+}
+
+.editorial-project-block:hover .schematic-card {
+  border-color: rgba(244, 240, 232, 0.16);
 }
 
 .schematic-header {
@@ -917,6 +993,19 @@ body.nav-locked {
   font-size: 9px;
   letter-spacing: 0.16em;
   color: #3BB17B;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.schema-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3BB17B;
+  box-shadow: 0 0 8px #3BB17B;
+  animation: pulseDot 1.6s infinite ease-in-out;
 }
 
 .schematic-flow {
@@ -935,11 +1024,18 @@ body.nav-locked {
   flex-direction: column;
   gap: 4px;
   flex: 1;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.flow-node:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-warm-gold);
 }
 
 .flow-node.active {
-  border-color: rgba(182, 58, 69, 0.5);
-  background: rgba(111, 32, 40, 0.1);
+  border-color: rgba(182, 58, 69, 0.6);
+  background: rgba(111, 32, 40, 0.14);
+  box-shadow: 0 0 20px rgba(182, 58, 69, 0.15);
 }
 
 .node-title {
@@ -959,6 +1055,7 @@ body.nav-locked {
   height: 1px;
   background: var(--border-subtle);
   position: relative;
+  overflow: hidden;
 }
 
 .pulse-line {
@@ -966,16 +1063,17 @@ body.nav-locked {
   top: 0;
   left: 0;
   height: 100%;
-  width: 50%;
-  background: var(--accent-crimson);
-  animation: connectorPulse 2s infinite ease-in-out;
+  width: 60%;
+  background: linear-gradient(90deg, transparent, var(--accent-crimson), transparent);
+  animation: connectorPulse 1.6s infinite linear;
 }
 
 @keyframes connectorPulse {
-  0% { left: -50%; }
-  100% { left: 100%; }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
 }
 
+/* Live Fluctuating Telemetry Equalizer Bars */
 .telemetry-bars {
   display: flex;
   align-items: flex-end;
@@ -986,14 +1084,29 @@ body.nav-locked {
 
 .telemetry-bar {
   flex: 1;
-  height: var(--h);
-  background: rgba(216, 184, 156, 0.25);
+  height: var(--h, 60%);
+  background: rgba(216, 184, 156, 0.3);
   border-radius: 2px 2px 0 0;
-  transition: background 0.3s ease;
+  transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s ease;
+  animation: barFluctuate 3s ease-in-out infinite alternate;
+}
+
+.telemetry-bar:nth-child(2) { animation-delay: 0.4s; }
+.telemetry-bar:nth-child(3) { animation-delay: 0.8s; }
+.telemetry-bar:nth-child(4) { animation-delay: 0.2s; }
+.telemetry-bar:nth-child(5) { animation-delay: 0.6s; }
+.telemetry-bar:nth-child(6) { animation-delay: 1.0s; }
+.telemetry-bar:nth-child(7) { animation-delay: 0.5s; }
+
+@keyframes barFluctuate {
+  0% { opacity: 0.6; filter: brightness(0.9); }
+  50% { opacity: 1; filter: brightness(1.3); }
+  100% { opacity: 0.8; filter: brightness(1.1); }
 }
 
 .editorial-project-block:hover .telemetry-bar {
   background: var(--accent-warm-gold);
+  box-shadow: 0 0 12px var(--accent-warm-gold-dim);
 }
 
 .telemetry-meta {
@@ -1006,6 +1119,7 @@ body.nav-locked {
 
 .mono-value {
   color: var(--accent-warm-gold);
+  font-weight: 600;
 }
 
 .matrix-grid {
@@ -1022,6 +1136,12 @@ body.nav-locked {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.matrix-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-warm-gold);
 }
 
 .matrix-lbl {
@@ -1038,7 +1158,10 @@ body.nav-locked {
   color: var(--text-titanium);
 }
 
-/* 3. SECTION: CASE STUDY */
+/* ==========================================================================
+   3. SECTION: CASE STUDY (DYNAMIC NUMBER ROLL-UP + INTERACTIVE PIPELINE)
+   ========================================================================== */
+
 .section-case-study {
   background: #030303;
 }
@@ -1078,11 +1201,28 @@ body.nav-locked {
 .metric-hero-banner {
   background: linear-gradient(180deg, #0D0B0A 0%, #060505 100%);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 64px 48px;
   margin-bottom: 56px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.metric-hero-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-crimson), var(--accent-warm-gold), transparent);
+  animation: bannerShimmer 4s infinite linear;
+}
+
+@keyframes bannerShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .metric-compare-box {
@@ -1113,10 +1253,12 @@ body.nav-locked {
   line-height: 1;
   color: var(--text-muted);
   letter-spacing: -0.02em;
+  transition: color 0.4s ease;
 }
 
 .metric-col.after .metric-big-number {
   color: var(--accent-warm-gold);
+  text-shadow: 0 0 24px var(--accent-warm-gold-dim);
 }
 
 .metric-caption {
@@ -1128,7 +1270,13 @@ body.nav-locked {
 .metric-divider-arrow {
   font-size: 40px;
   color: var(--accent-crimson);
-  opacity: 0.8;
+  opacity: 0.85;
+  animation: arrowPulse 2s infinite ease-in-out;
+}
+
+@keyframes arrowPulse {
+  0%, 100% { transform: translateX(0); opacity: 0.7; }
+  50% { transform: translateX(6px); opacity: 1; text-shadow: 0 0 12px var(--accent-crimson); }
 }
 
 .case-study-pillars-grid {
@@ -1146,6 +1294,13 @@ body.nav-locked {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pillar-card:hover {
+  border-color: var(--border-active);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
 }
 
 .pillar-num {
@@ -1196,11 +1351,19 @@ body.nav-locked {
   padding: 20px 24px;
   border-radius: 4px;
   flex: 1;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.pipeline-step:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-warm-gold);
+  background: #0D0B0A;
 }
 
 .pipeline-step.active {
-  border-color: rgba(182, 58, 69, 0.6);
-  background: rgba(111, 32, 40, 0.08);
+  border-color: rgba(182, 58, 69, 0.7);
+  background: rgba(111, 32, 40, 0.12);
+  box-shadow: 0 0 24px rgba(182, 58, 69, 0.18);
 }
 
 .step-indicator {
@@ -1231,10 +1394,13 @@ body.nav-locked {
 .pipeline-arrow {
   color: var(--accent-crimson);
   font-size: 14px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
-/* 4. SECTION: PRODUCT THINKING */
+/* ==========================================================================
+   4. SECTION: PRODUCT THINKING (INTERACTIVE ACCORDION SPOTLIGHT)
+   ========================================================================== */
+
 .thinking-headline {
   font-family: var(--font-display);
   font-size: clamp(32px, 5vw, 64px);
@@ -1253,14 +1419,36 @@ body.nav-locked {
   display: grid;
   grid-template-columns: 100px 1fr;
   gap: 48px;
-  padding: 56px 0;
+  padding: 56px 20px;
   border-bottom: 1px solid var(--border-subtle);
   align-items: flex-start;
-  transition: padding-left 0.3s ease;
+  transition: padding-left 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+  position: relative;
+  border-radius: 4px;
+}
+
+.principle-row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background: var(--accent-crimson);
+  opacity: 0;
+  transform: scaleY(0.4);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .principle-row:hover {
-  padding-left: 12px;
+  padding-left: 28px;
+  background: rgba(244, 240, 232, 0.02);
+  border-color: rgba(244, 240, 232, 0.16);
+}
+
+.principle-row:hover::before {
+  opacity: 1;
+  transform: scaleY(1);
 }
 
 .principle-num {
@@ -1268,6 +1456,12 @@ body.nav-locked {
   font-size: 20px;
   font-weight: 600;
   color: var(--accent-crimson);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.principle-row:hover .principle-num {
+  color: var(--accent-warm-gold);
+  transform: scale(1.1);
 }
 
 .principle-body {
@@ -1280,15 +1474,28 @@ body.nav-locked {
   font-weight: 700;
   color: var(--text-titanium);
   margin-bottom: 14px;
+  transition: color 0.3s ease;
+}
+
+.principle-row:hover .principle-title {
+  color: #FFFFFF;
 }
 
 .principle-description {
   font-size: 16.5px;
   line-height: 1.65;
   color: var(--text-muted);
+  transition: color 0.3s ease;
 }
 
-/* 5. SECTION: DUAL DISCIPLINE */
+.principle-row:hover .principle-description {
+  color: var(--text-titanium);
+}
+
+/* ==========================================================================
+   5. SECTION: DUAL DISCIPLINE (INTERACTIVE BRIDGE LASER BEAM)
+   ========================================================================== */
+
 .languages-header {
   margin-bottom: 72px;
   max-width: 860px;
@@ -1313,9 +1520,14 @@ body.nav-locked {
   grid-template-columns: 1fr 140px 1fr;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 8px;
   overflow: hidden;
   align-items: stretch;
+  transition: box-shadow 0.4s ease;
+}
+
+.dual-discipline-stage:hover {
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7);
 }
 
 .discipline-side {
@@ -1357,17 +1569,27 @@ body.nav-locked {
   align-items: center;
   gap: 12px;
   transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 .skill-item::before {
   content: '—';
   color: var(--accent-crimson);
   font-family: var(--font-mono);
+  transition: transform 0.3s ease;
 }
 
 .skill-item:hover {
   color: var(--text-titanium);
-  transform: translateX(4px);
+  background: rgba(244, 240, 232, 0.04);
+  transform: translateX(6px);
+}
+
+.skill-item:hover::before {
+  transform: scaleX(1.4);
+  color: var(--accent-warm-gold);
 }
 
 .discipline-bridge-hub {
@@ -1379,12 +1601,14 @@ body.nav-locked {
   align-items: center;
   justify-content: center;
   gap: 18px;
+  position: relative;
+  transition: background 0.3s ease;
 }
 
 .bridge-core-node {
   position: relative;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1393,9 +1617,15 @@ body.nav-locked {
 .bridge-ring {
   position: absolute;
   inset: 0;
-  border: 1px dashed var(--accent-warm-gold);
+  border: 1.5px dashed var(--accent-warm-gold);
   border-radius: 50%;
-  animation: rotateBridge 12s linear infinite;
+  animation: rotateBridge 14s linear infinite;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.discipline-bridge-hub.is-active .bridge-ring {
+  border-color: var(--accent-future-amber);
+  transform: scale(1.15);
 }
 
 @keyframes rotateBridge {
@@ -1404,11 +1634,17 @@ body.nav-locked {
 }
 
 .bridge-dot {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   background: var(--accent-crimson);
   border-radius: 50%;
   box-shadow: 0 0 16px var(--accent-crimson);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.discipline-bridge-hub.is-active .bridge-dot {
+  background: var(--accent-future-amber);
+  box-shadow: 0 0 24px var(--accent-future-amber);
 }
 
 .bridge-label {
@@ -1419,7 +1655,10 @@ body.nav-locked {
   text-transform: uppercase;
 }
 
-/* 6. SECTION: EXPERIENCE */
+/* ==========================================================================
+   6. SECTION: EXPERIENCE (TIMELINE GLOW)
+   ========================================================================== */
+
 .experience-timeline {
   display: flex;
   flex-direction: column;
@@ -1432,8 +1671,15 @@ body.nav-locked {
   gap: 64px;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 56px;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.timeline-entry:hover {
+  border-color: var(--border-active);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
 }
 
 .timeline-meta-col {
@@ -1492,6 +1738,11 @@ body.nav-locked {
   color: var(--text-muted);
   position: relative;
   padding-left: 20px;
+  transition: color 0.3s ease;
+}
+
+.timeline-highlights li:hover {
+  color: var(--text-titanium);
 }
 
 .timeline-highlights li::before {
@@ -1500,9 +1751,18 @@ body.nav-locked {
   left: 0;
   color: var(--accent-crimson);
   font-size: 12px;
+  transition: transform 0.3s ease;
 }
 
-/* 7. SECTION: IMPACT */
+.timeline-highlights li:hover::before {
+  transform: translateX(3px);
+  color: var(--accent-warm-gold);
+}
+
+/* ==========================================================================
+   7. SECTION: IMPACT & NUMBERS (LIVE NUMBER ROLLER)
+   ========================================================================== */
+
 .section-impact {
   background: #030303;
   padding: 160px 0;
@@ -1517,16 +1777,20 @@ body.nav-locked {
 .impact-stat-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 56px 40px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .impact-stat-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
+  border-color: var(--border-active);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(216, 184, 156, 0.08);
 }
 
 .stat-number-giant {
@@ -1536,6 +1800,7 @@ body.nav-locked {
   line-height: 1;
   color: var(--text-titanium);
   letter-spacing: -0.03em;
+  text-shadow: 0 0 30px rgba(244, 240, 232, 0.1);
 }
 
 .stat-unit {
@@ -1558,7 +1823,10 @@ body.nav-locked {
   color: var(--text-muted);
 }
 
-/* 8. SECTION: BEYOND WORK */
+/* ==========================================================================
+   8. SECTION: BEYOND WORK (FLOATING GLOW CARDS)
+   ========================================================================== */
+
 .beyond-headline {
   font-family: var(--font-display);
   font-size: clamp(30px, 4.5vw, 56px);
@@ -1575,17 +1843,19 @@ body.nav-locked {
 .beyond-item {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: default;
 }
 
 .beyond-item:hover {
-  border-color: var(--border-active);
-  transform: translateY(-4px);
+  border-color: var(--accent-warm-gold);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(216, 184, 156, 0.1);
 }
 
 .beyond-number {
@@ -1593,6 +1863,11 @@ body.nav-locked {
   font-size: 11px;
   color: var(--accent-warm-gold);
   font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.beyond-item:hover .beyond-number {
+  transform: scale(1.15);
 }
 
 .beyond-title {
@@ -1609,14 +1884,36 @@ body.nav-locked {
   color: var(--text-muted);
 }
 
-/* 9. SECTION: CURRENTLY EXPLORING */
+/* ==========================================================================
+   9. SECTION: CURRENTLY EXPLORING (SWEEPING RADAR SCANNER BEAM)
+   ========================================================================== */
+
 .exploring-card {
   background: linear-gradient(135deg, #0F0D0C 0%, #060505 100%);
   border: 1px solid rgba(182, 58, 69, 0.25);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 64px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* Sweeping Laser Radar Beam */
+.exploring-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg at 50% 50%, rgba(182, 58, 69, 0.12) 0deg, transparent 60deg, transparent 360deg);
+  animation: radarSweep 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes radarSweep {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .exploring-badge-row {
@@ -1624,6 +1921,8 @@ body.nav-locked {
   align-items: center;
   gap: 18px;
   margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
 }
 
 .exploring-pill {
@@ -1642,6 +1941,8 @@ body.nav-locked {
   font-weight: 700;
   color: var(--text-titanium);
   margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .exploring-copy {
@@ -1650,25 +1951,31 @@ body.nav-locked {
   line-height: 1.6;
   color: var(--text-muted);
   max-width: 900px;
+  position: relative;
+  z-index: 2;
 }
 
 .exploring-radar-grid {
   position: absolute;
   right: 48px;
   bottom: 48px;
-  width: 120px;
-  height: 60px;
-  opacity: 0.25;
+  width: 140px;
+  height: 70px;
+  opacity: 0.35;
   background: repeating-linear-gradient(
     0deg,
     var(--accent-crimson),
     var(--accent-crimson) 1px,
     transparent 1px,
-    transparent 12px
+    transparent 14px
   );
+  z-index: 1;
 }
 
-/* 10. SECTION: CONTACT */
+/* ==========================================================================
+   10. SECTION: CONTACT (MAGNETIC CTA BUTTON)
+   ========================================================================== */
+
 .section-contact {
   padding: 160px 0 60px 0;
   background: #000000;
@@ -1698,8 +2005,11 @@ body.nav-locked {
 
 .cta-actions-row {
   margin-bottom: 48px;
+  display: flex;
+  justify-content: center;
 }
 
+/* Magnetic Button */
 .cta-button-main {
   display: inline-flex;
   align-items: center;
@@ -1713,13 +2023,15 @@ body.nav-locked {
   letter-spacing: 0.16em;
   padding: 18px 40px;
   border-radius: 4px;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   touch-action: manipulation;
+  position: relative;
+  overflow: hidden;
 }
 
 .cta-button-main:hover {
   background: var(--accent-warm-gold);
-  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(216, 184, 156, 0.3);
 }
 
 .cta-arrow-icon {
@@ -1727,7 +2039,7 @@ body.nav-locked {
 }
 
 .cta-button-main:hover .cta-arrow-icon {
-  transform: translateX(4px);
+  transform: translateX(6px);
 }
 
 .social-links-row {
@@ -1744,12 +2056,13 @@ body.nav-locked {
   font-size: 12px;
   letter-spacing: 0.16em;
   color: var(--text-muted);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.2s ease;
   padding: 6px 10px;
 }
 
 .social-link:hover {
   color: var(--text-titanium);
+  transform: translateY(-2px);
 }
 
 .social-sep {
@@ -1782,12 +2095,14 @@ body.nav-locked {
 .back-to-top-btn {
   text-decoration: none;
   color: var(--accent-warm-gold);
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
   padding: 4px 8px;
+  display: inline-block;
 }
 
 .back-to-top-btn:hover {
   color: var(--text-titanium);
+  transform: translateY(-2px);
 }
 
 /* ==========================================================================
@@ -1856,7 +2171,6 @@ body.nav-locked {
     font-size: clamp(52px, 15vw, 110px);
   }
   
-  /* Portrait container is now big, tall, centered in upper viewport */
   .hero-portrait-stage {
     flex: 1;
     display: flex;

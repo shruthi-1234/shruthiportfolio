@@ -1,12 +1,14 @@
 /**
  * SHRUTHI SUNDAR — CINEMATIC EDITORIAL PORTFOLIO ENGINE
  * 
- * UNIVERSAL INTERACTION ENGINE (DESKTOP & MOBILE COMPATIBLE):
- * - Two 1:1 Aligned Layers: shruthi-human.png (Base) ↔ shruthi-robot.png (Neck-Down Chassis)
- * - Face is 100% biological human; robot chassis is revealed only from neck down
- * - Hold to see the future button triggers full chassis transformation
- * - Multi-touch drag tracking with touch-action isolation (iOS Safari & Android Chrome compatible)
- * - Mobile gyroscope & desktop mouse parallax
+ * UNIVERSAL INTERACTION & CREATIVE ANIMATION ENGINE:
+ * 1. HERO REVEAL: Two 1:1 Aligned Layers (Human ↔ Neck-down Robot Chassis)
+ * 2. 3D PERSPECTIVE TILT & DYNAMIC SPOTLIGHT: Project Cards & Beyond Collage
+ * 3. NUMBER ROLL-UP COUNTERS: Case Study & Impact Stats
+ * 4. LIVE TELEMETRY STREAM SIMULATION: Real-Time Stream Equalizer
+ * 5. DUAL DISCIPLINE SYNTHESIS BRIDGE: Interactive Skill Connection Pulse
+ * 6. MAGNETIC CTA BUTTON: Cursor Proximity Magnetism
+ * 7. MOBILE TOUCH ISOLATION & GYROSCOPE PARALLAX
  */
 
 (function () {
@@ -19,36 +21,33 @@
   const bgTextLayer = document.getElementById('heroBgTextLayer');
   const holdActionPill = document.getElementById('holdActionPill');
 
-  // Dynamic Radii based on Screen Size
   function getRevealRadii() {
     const isMobile = window.innerWidth <= 768;
     return {
-      normal: isMobile ? 120 : 165,  // ~240px on mobile, ~330px on desktop
-      hold: isMobile ? 650 : 980      // Full canvas expansion
+      normal: isMobile ? 120 : 165,
+      hold: isMobile ? 650 : 980
     };
   }
 
-  const LERP_POS = 0.16;                 // Smooth pointer follow inertia
-  const LERP_RAD_ENTER = 0.14;           // Smooth radius expansion factor
-  const LERP_RAD_HOLD = 0.06;            // Smooth progressive hold factor
-  const LERP_RAD_LEAVE = 0.09;          // Smooth relaxation factor when leaving
-  const PARALLAX_MAX_OFFSET = 14;        // Max parallax offset for background text (px)
+  const LERP_POS = 0.16;
+  const LERP_RAD_ENTER = 0.14;
+  const LERP_RAD_HOLD = 0.06;
+  const LERP_RAD_LEAVE = 0.09;
+  const PARALLAX_MAX_OFFSET = 14;
 
-  // Tracking State
   let isHovering = false;
   let isHolding = false;
   let isTouchActive = false;
   
-  let stageRect = { left: 0, top: 0, width: 600, height: 334 };
-  let targetX = 300;
-  let targetY = 240; // Default center around chest/neck area
-  let currentX = 300;
-  let currentY = 240;
+  let stageRect = { left: 0, top: 0, width: 380, height: 511 };
+  let targetX = 190;
+  let targetY = 320;
+  let currentX = 190;
+  let currentY = 320;
 
   let targetRadius = 0;
   let currentRadius = 0;
 
-  // Background Text Parallax State
   let targetParallaxX = 0;
   let targetParallaxY = 0;
   let currentParallaxX = 0;
@@ -59,18 +58,17 @@
       stageRect = portraitContainer.getBoundingClientRect();
       if (!isHovering && !isTouchActive && !isHolding) {
         targetX = stageRect.width / 2;
-        targetY = stageRect.height * 0.65; // Focus on torso/chest area
+        targetY = stageRect.height * 0.65;
         currentX = targetX;
         currentY = targetY;
       }
     }
   }
 
-  // --- Main Animation Loop (60fps GPU Updates) ---
+  // --- Main Hero Animation Loop (60fps GPU Updates) ---
   function heroAnimationLoop() {
     const radii = getRevealRadii();
 
-    // 1. Target Radius based on interaction state
     if (isHolding) {
       targetRadius = radii.hold;
     } else if (isHovering || isTouchActive) {
@@ -79,11 +77,9 @@
       targetRadius = 0;
     }
 
-    // 2. Smooth Coordinates with Inertia
     currentX += (targetX - currentX) * LERP_POS;
     currentY += (targetY - currentY) * LERP_POS;
 
-    // 3. Smooth Radius Dynamics
     let radFactor = LERP_RAD_LEAVE;
     if (isHolding) {
       radFactor = LERP_RAD_HOLD;
@@ -92,18 +88,15 @@
     }
     currentRadius += (targetRadius - currentRadius) * radFactor;
 
-    // 4. Smooth Parallax on Background Name
     currentParallaxX += (targetParallaxX - currentParallaxX) * 0.06;
     currentParallaxY += (targetParallaxY - currentParallaxY) * 0.06;
 
-    // 5. Apply Mask Custom Properties to Container
     if (portraitContainer) {
       portraitContainer.style.setProperty('--cursor-x', `${currentX.toFixed(1)}px`);
       portraitContainer.style.setProperty('--cursor-y', `${currentY.toFixed(1)}px`);
       portraitContainer.style.setProperty('--reveal-radius', `${currentRadius.toFixed(1)}px`);
     }
 
-    // 6. Apply Parallax Custom Properties to Background Text Layer
     if (bgTextLayer) {
       bgTextLayer.style.setProperty('--bg-parallax-x', `${currentParallaxX.toFixed(1)}px`);
       bgTextLayer.style.setProperty('--bg-parallax-y', `${currentParallaxY.toFixed(1)}px`);
@@ -112,11 +105,9 @@
     requestAnimationFrame(heroAnimationLoop);
   }
 
-  // --- Mouse Pointer Event Handlers (Desktop) ---
   function onPointerMove(e) {
     if (e.pointerType === 'touch') return;
 
-    // Parallax calculation relative to window center
     const winCenterX = window.innerWidth / 2;
     const winCenterY = window.innerHeight / 2;
     const normX = (e.clientX - winCenterX) / winCenterX;
@@ -125,7 +116,6 @@
     targetParallaxX = -normX * PARALLAX_MAX_OFFSET;
     targetParallaxY = -normY * (PARALLAX_MAX_OFFSET * 0.7);
 
-    // Portrait mask calculation
     if (!portraitContainer) return;
     stageRect = portraitContainer.getBoundingClientRect();
 
@@ -211,7 +201,7 @@
     isHovering = false;
   }
 
-  // --- Hold Button Interactive Trigger ("hold to see the future") ---
+  // --- Hold Button Interactive Trigger ---
   function initHoldActionPill() {
     if (!holdActionPill) return;
 
@@ -231,7 +221,6 @@
       holdActionPill.classList.remove('is-active');
     }
 
-    // Pointer & Touch Listeners for the Hold Pill
     holdActionPill.addEventListener('mousedown', startHold);
     window.addEventListener('mouseup', endHold);
 
@@ -240,7 +229,7 @@
     holdActionPill.addEventListener('touchcancel', endHold, { passive: true });
   }
 
-  // --- Device Orientation Parallax (Mobile Gyroscope) ---
+  // --- Mobile Gyroscope Parallax ---
   function onDeviceOrientation(e) {
     if (window.innerWidth > 768) return;
     if (e.gamma !== null && e.beta !== null) {
@@ -252,7 +241,151 @@
   }
 
   // =========================================================================
-  // 2. MOBILE MENU & NAVIGATION CONTROLLER
+  // 2. CREATIVE 3D PERSPECTIVE TILT & DYNAMIC SPOTLIGHT ON CARDS
+  // =========================================================================
+  function init3DCardTilts() {
+    if (window.innerWidth <= 860) return; // Desktop only for optimal performance
+
+    const tiltCards = document.querySelectorAll('.editorial-project-block, .beyond-item');
+
+    tiltCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        // Set spotlight CSS variables
+        card.style.setProperty('--card-mouse-x', `${x}px`);
+        card.style.setProperty('--card-mouse-y', `${y}px`);
+
+        // Calculate 3D tilt angles
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      });
+    });
+  }
+
+  // =========================================================================
+  // 3. NUMBER ROLL-UP ANIMATIONS (CASE STUDY & IMPACT STATS)
+  // =========================================================================
+  function animateValue(obj, start, end, duration, suffix = '') {
+    if (!obj || obj.dataset.animated) return;
+    obj.dataset.animated = 'true';
+
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      const easeProgress = 1 - Math.pow(1 - progress, 3); // Cubic ease out
+      const currentVal = Math.floor(easeProgress * (end - start) + start);
+      obj.innerHTML = `${currentVal}<span class="stat-unit">${suffix}</span>`;
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        obj.innerHTML = `${end}<span class="stat-unit">${suffix}</span>`;
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  function initCounterObservers() {
+    const counterTarget = document.getElementById('counterTarget');
+    const impactCards = document.querySelectorAll('.impact-stat-card');
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Animate Case Study Target Number
+          if (entry.target === counterTarget) {
+            animateValue(counterTarget, 40, 12, 1400, 'sec');
+          }
+
+          // Animate Impact Stat Cards
+          if (entry.target.classList.contains('impact-stat-card')) {
+            const numEl = entry.target.querySelector('.stat-number-giant');
+            if (numEl) {
+              const text = numEl.textContent.trim();
+              if (text.includes('12')) animateValue(numEl, 0, 12, 1200, 'sec');
+              else if (text.includes('100')) animateValue(numEl, 0, 100, 1600, 'GB+');
+              else if (text.includes('3')) animateValue(numEl, 0, 3, 1000, '×');
+            }
+          }
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    if (counterTarget) counterObserver.observe(counterTarget);
+    impactCards.forEach(card => counterObserver.observe(card));
+  }
+
+  // =========================================================================
+  // 4. LIVE TELEMETRY EQUALIZER WAVE ANIMATION (PROJECT 02)
+  // =========================================================================
+  function initTelemetryLiveWave() {
+    const telemetryBars = document.querySelectorAll('.telemetry-bar');
+    if (!telemetryBars.length) return;
+
+    setInterval(() => {
+      telemetryBars.forEach(bar => {
+        const randHeight = Math.floor(Math.random() * 65) + 35; // 35% to 100%
+        bar.style.setProperty('--h', `${randHeight}%`);
+      });
+    }, 1800);
+  }
+
+  // =========================================================================
+  // 5. DUAL DISCIPLINE SYNTHESIS BRIDGE PULSE (SECTION 05)
+  // =========================================================================
+  function initDualDisciplineBridge() {
+    const bridgeHub = document.querySelector('.discipline-bridge-hub');
+    const skillItems = document.querySelectorAll('.skill-item');
+
+    if (!bridgeHub || !skillItems.length) return;
+
+    skillItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        bridgeHub.classList.add('is-active');
+      });
+      item.addEventListener('mouseleave', () => {
+        bridgeHub.classList.remove('is-active');
+      });
+    });
+  }
+
+  // =========================================================================
+  // 6. MAGNETIC CTA BUTTON EFFECT (SECTION 10 & HERO)
+  // =========================================================================
+  function initMagneticButtons() {
+    if (window.innerWidth <= 860) return;
+
+    const magneticButtons = document.querySelectorAll('.cta-button-main');
+
+    magneticButtons.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0px, 0px)';
+      });
+    });
+  }
+
+  // =========================================================================
+  // 7. MOBILE MENU & NAVIGATION CONTROLLER
   // =========================================================================
   function initMobileNav() {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -283,7 +416,7 @@
   }
 
   // =========================================================================
-  // 3. SCROLL REVEALS & EDITORIAL STORYTELLING ENGINE
+  // 8. SCROLL REVEALS & EDITORIAL STORYTELLING ENGINE
   // =========================================================================
   function initScrollReveals() {
     const revealItems = document.querySelectorAll('.reveal-item');
@@ -323,12 +456,17 @@
   }
 
   // =========================================================================
-  // 4. INITIALIZATION
+  // 9. INITIALIZATION
   // =========================================================================
   function init() {
     updateStageRect();
 
-    window.addEventListener('resize', updateStageRect, { passive: true });
+    window.addEventListener('resize', () => {
+      updateStageRect();
+      init3DCardTilts();
+      initMagneticButtons();
+    }, { passive: true });
+
     window.addEventListener('orientationchange', () => {
       setTimeout(updateStageRect, 150);
     });
@@ -347,12 +485,18 @@
       portraitContainer.addEventListener('touchcancel', onTouchCancel, { passive: true });
     }
 
-    // Optional Device Gyroscope Parallax
+    // Optional Gyroscope Parallax
     if (window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', onDeviceOrientation, { passive: true });
     }
 
+    // Initialize All Interactive Section Modules
     initHoldActionPill();
+    init3DCardTilts();
+    initCounterObservers();
+    initTelemetryLiveWave();
+    initDualDisciplineBridge();
+    initMagneticButtons();
     initMobileNav();
     initScrollReveals();
     initSmoothAnchors();
