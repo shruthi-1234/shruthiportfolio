@@ -712,8 +712,23 @@ body.nav-locked {
   position: relative;
 }
 
+.section-projects::before {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75vw;
+  height: 60vh;
+  background: radial-gradient(circle, rgba(232, 122, 36, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .section-header-block {
-  margin-bottom: 72px;
+  margin-bottom: 64px;
+  position: relative;
+  z-index: 2;
 }
 
 .section-subtitle-lead {
@@ -728,23 +743,26 @@ body.nav-locked {
 .editorial-projects-stack {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 36px;
   perspective: 1200px;
+  position: relative;
+  z-index: 2;
 }
 
-/* Interactive 3D Tilt Project Card */
+/* Base Interactive 3D Tilt Project Card */
 .editorial-project-block {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 56px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 10px;
-  padding: 56px 48px;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 48px;
+  background: radial-gradient(130% 130% at 0% 0%, rgba(24, 20, 18, 0.7) 0%, rgba(10, 9, 8, 0.96) 100%);
+  border: 1px solid rgba(244, 240, 232, 0.09);
+  border-radius: 12px;
+  padding: 48px 44px;
   transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease-out;
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 20px 50px rgba(0, 0, 0, 0.75);
 }
 
 .editorial-project-block::before {
@@ -752,8 +770,8 @@ body.nav-locked {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    circle 360px at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%),
-    rgba(216, 184, 156, 0.08),
+    circle 400px at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%),
+    rgba(216, 184, 156, 0.07),
     transparent 80%
   );
   pointer-events: none;
@@ -767,19 +785,52 @@ body.nav-locked {
 
 .editorial-project-block:hover {
   border-color: var(--border-active);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(216, 184, 156, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(216, 184, 156, 0.06);
 }
 
 /* FLAGSHIP PROJECT 01: MANGO FACTORY LUXURY EMPHASIS */
 .editorial-project-block.flagship-project {
-  border: 1px solid rgba(216, 184, 156, 0.35);
-  background: linear-gradient(135deg, rgba(22, 18, 15, 0.95) 0%, rgba(10, 9, 8, 0.98) 100%);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(232, 122, 36, 0.08);
+  border: 1px solid rgba(216, 184, 156, 0.4);
+  background: radial-gradient(140% 140% at 0% 0%, rgba(36, 26, 18, 0.85) 0%, rgba(12, 10, 9, 0.98) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 220, 180, 0.15), 0 24px 60px rgba(0, 0, 0, 0.85), 0 0 45px rgba(232, 122, 36, 0.12);
 }
 
 .editorial-project-block.flagship-project:hover {
   border-color: var(--accent-warm-gold);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(216, 184, 156, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 220, 180, 0.25), 0 32px 80px rgba(0, 0, 0, 0.95), 0 0 60px rgba(216, 184, 156, 0.2);
+}
+
+/* PROJECT 02: FINTECH LIQUIDITY */
+.editorial-project-block.fintech-project {
+  border: 1px solid rgba(59, 177, 123, 0.25);
+  background: radial-gradient(140% 140% at 0% 0%, rgba(14, 24, 20, 0.75) 0%, rgba(8, 12, 10, 0.98) 100%);
+}
+
+.editorial-project-block.fintech-project:hover {
+  border-color: rgba(59, 177, 123, 0.6);
+  box-shadow: inset 0 1px 0 rgba(59, 177, 123, 0.2), 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 40px rgba(59, 177, 123, 0.12);
+}
+
+/* PROJECT 03: STREAMING TREASURY */
+.editorial-project-block.streaming-project {
+  border: 1px solid rgba(232, 122, 36, 0.25);
+  background: radial-gradient(140% 140% at 0% 0%, rgba(28, 18, 12, 0.75) 0%, rgba(10, 8, 7, 0.98) 100%);
+}
+
+.editorial-project-block.streaming-project:hover {
+  border-color: rgba(232, 122, 36, 0.6);
+  box-shadow: inset 0 1px 0 rgba(232, 122, 36, 0.2), 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 40px rgba(232, 122, 36, 0.12);
+}
+
+/* PROJECT 04: ANALYTICS PORTAL */
+.editorial-project-block.analytics-project {
+  border: 1px solid rgba(182, 58, 69, 0.25);
+  background: radial-gradient(140% 140% at 0% 0%, rgba(26, 14, 18, 0.75) 0%, rgba(10, 7, 9, 0.98) 100%);
+}
+
+.editorial-project-block.analytics-project:hover {
+  border-color: rgba(182, 58, 69, 0.6);
+  box-shadow: inset 0 1px 0 rgba(182, 58, 69, 0.2), 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 40px rgba(182, 58, 69, 0.12);
 }
 
 .project-left-col {
@@ -791,78 +842,115 @@ body.nav-locked {
 .project-header-meta {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
+  gap: 14px;
+  margin-bottom: 16px;
   flex-wrap: wrap;
 }
 
 .project-index {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   color: var(--accent-warm-gold);
   text-transform: uppercase;
 }
 
+.flagship-project .project-index {
+  color: var(--accent-future-amber);
+}
+
+.fintech-project .project-index {
+  color: #3BB17B;
+}
+
+.streaming-project .project-index {
+  color: var(--accent-future-amber);
+}
+
+.analytics-project .project-index {
+  color: var(--accent-crimson);
+}
+
 .project-domains {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 10px;
   letter-spacing: 0.16em;
   color: var(--text-dim);
 }
 
 .project-title {
   font-family: var(--font-display);
-  font-size: clamp(28px, 3.8vw, 48px);
+  font-size: clamp(26px, 3.2vw, 42px);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: var(--text-titanium);
-  margin-bottom: 18px;
-  line-height: 1.1;
+  margin-bottom: 16px;
+  line-height: 1.12;
 }
 
 .project-description {
-  font-size: 16px;
-  line-height: 1.65;
+  font-size: 15.5px;
+  line-height: 1.68;
   color: var(--text-muted);
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .project-metrics-pills {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .metric-badge {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
+  font-weight: 600;
   letter-spacing: 0.08em;
-  color: var(--accent-warm-gold);
-  background: rgba(216, 184, 156, 0.08);
-  border: 1px solid rgba(216, 184, 156, 0.25);
+  color: var(--text-titanium);
+  background: rgba(244, 240, 232, 0.04);
+  border: 1px solid rgba(244, 240, 232, 0.12);
   padding: 6px 14px;
-  border-radius: 4px;
+  border-radius: 100px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.metric-badge:hover {
+  border-color: var(--accent-warm-gold);
+  background: rgba(216, 184, 156, 0.08);
+}
+
+.flagship-project .metric-badge {
+  border-color: rgba(216, 184, 156, 0.25);
+  color: var(--accent-warm-gold);
 }
 
 .project-action-link {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.18em;
   color: var(--text-titanium);
-  transition: color 0.3s ease;
+  background: rgba(244, 240, 232, 0.04);
+  border: 1px solid rgba(244, 240, 232, 0.14);
+  padding: 12px 22px;
+  border-radius: 6px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   margin-top: auto;
+  align-self: flex-start;
 }
 
 .project-action-link:hover {
-  color: var(--accent-warm-gold);
+  background: var(--accent-warm-gold);
+  border-color: var(--accent-warm-gold);
+  color: #0A0908;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(216, 184, 156, 0.25);
 }
 
 .action-arrow {
@@ -871,46 +959,85 @@ body.nav-locked {
 }
 
 .project-action-link:hover .action-arrow {
-  transform: translateX(8px);
+  transform: translateX(5px);
+  color: #0A0908;
 }
 
-/* Right Column: Telemetry & Showcase Stage */
+/* Flagship Project CTA specific */
+.flagship-project .project-action-link {
+  background: rgba(232, 122, 36, 0.12);
+  border: 1px solid rgba(232, 122, 36, 0.4);
+  color: var(--accent-warm-gold);
+}
+
+.flagship-project .project-action-link:hover {
+  background: var(--accent-future-amber);
+  border-color: var(--accent-future-amber);
+  color: #0A0908;
+  box-shadow: 0 8px 24px rgba(232, 122, 36, 0.3);
+}
+
+/* Right Column: High-End Telemetry Console Stage */
 .project-right-col {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Flagship Big Metric Card for Mango Factory */
-.flagship-metric-showcase {
-  background: #080706;
-  border: 1px solid rgba(216, 184, 156, 0.3);
-  border-radius: 8px;
-  padding: 40px 36px;
+/* Luxury Telemetry Display Console */
+.flagship-metric-showcase, .schematic-card {
+  background: #040403;
+  border: 1px solid rgba(244, 240, 232, 0.08);
+  border-radius: 10px;
+  padding: 32px 28px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+  justify-content: space-between;
+  gap: 22px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 40px rgba(0, 0, 0, 0.9);
+  position: relative;
+  overflow: hidden;
 }
 
-.fms-header {
+.flagship-metric-showcase {
+  border: 1px solid rgba(216, 184, 156, 0.3);
+  background: radial-gradient(120% 120% at 100% 0%, rgba(30, 22, 14, 0.6) 0%, #050403 100%);
+}
+
+.schematic-card.fintech-card {
+  border: 1px solid rgba(59, 177, 123, 0.25);
+  background: radial-gradient(120% 120% at 100% 0%, rgba(12, 24, 18, 0.6) 0%, #040504 100%);
+}
+
+.schematic-card.streaming-card {
+  border: 1px solid rgba(232, 122, 36, 0.25);
+  background: radial-gradient(120% 120% at 100% 0%, rgba(26, 16, 10, 0.6) 0%, #050403 100%);
+}
+
+.schematic-card.analytics-card {
+  border: 1px solid rgba(182, 58, 69, 0.25);
+  background: radial-gradient(120% 120% at 100% 0%, rgba(24, 10, 14, 0.6) 0%, #050304 100%);
+}
+
+.fms-header, .schematic-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(244, 240, 232, 0.06);
-  padding-bottom: 14px;
+  padding-bottom: 12px;
 }
 
-.fms-tag {
+.fms-tag, .schema-code {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9.5px;
+  font-weight: 700;
   letter-spacing: 0.16em;
-  color: var(--accent-future-amber);
+  color: var(--accent-warm-gold);
 }
 
 .fms-source-link {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9.5px;
   letter-spacing: 0.14em;
   color: var(--text-dim);
   text-decoration: none;
@@ -921,59 +1048,9 @@ body.nav-locked {
   color: var(--accent-warm-gold);
 }
 
-.fms-number-giant {
-  font-family: var(--font-display);
-  font-size: clamp(48px, 6vw, 76px);
-  font-weight: 800;
-  color: var(--accent-warm-gold);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  text-shadow: 0 0 30px rgba(216, 184, 156, 0.2);
-}
-
-.fms-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--text-titanium);
-  font-weight: 700;
-}
-
-.fms-detail {
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--text-muted);
-}
-
-/* Schematic Tech Card for Morgan Stanley Projects */
-.schematic-card {
-  background: #080706;
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  padding: 36px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.schematic-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(244, 240, 232, 0.05);
-}
-
-.schema-code {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  color: var(--text-dim);
-}
-
 .schema-status {
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 9px;
   letter-spacing: 0.16em;
   color: #3BB17B;
   display: flex;
@@ -983,25 +1060,108 @@ body.nav-locked {
 
 .schema-status::before {
   content: '';
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: #3BB17B;
   box-shadow: 0 0 8px #3BB17B;
   animation: pulseDot 1.6s infinite ease-in-out;
 }
 
-.telemetry-meta {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  color: var(--text-dim);
+.schema-status.live-amber {
+  color: var(--accent-future-amber);
 }
 
-.mono-value {
-  color: var(--accent-warm-gold);
-  font-weight: 600;
+.schema-status.live-amber::before {
+  background: var(--accent-future-amber);
+  box-shadow: 0 0 8px var(--accent-future-amber);
+}
+
+.schema-status.live-crimson {
+  color: var(--accent-crimson);
+}
+
+.schema-status.live-crimson::before {
+  background: var(--accent-crimson);
+  box-shadow: 0 0 8px var(--accent-crimson);
+}
+
+.fms-hero-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 0;
+}
+
+.fms-number-giant {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.4vw, 56px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #F4F0E8 0%, #E0B888 60%, #E87A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(232, 122, 36, 0.25));
+}
+
+.fms-number-giant.fintech-number {
+  background: linear-gradient(135deg, #F4F0E8 0%, #6BD29D 70%, #3BB17B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(59, 177, 123, 0.25));
+}
+
+.fms-number-giant.amber-number {
+  background: linear-gradient(135deg, #F4F0E8 0%, #F5A623 70%, #E87A24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(232, 122, 36, 0.25));
+}
+
+.fms-number-giant.crimson-number {
+  background: linear-gradient(135deg, #F4F0E8 0%, #D8B89C 60%, #B63A45 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px rgba(182, 58, 69, 0.25));
+}
+
+.fms-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.fms-sub-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  border-top: 1px solid rgba(244, 240, 232, 0.06);
+  padding-top: 16px;
+}
+
+.fms-sub-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.fms-sub-val {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-titanium);
+}
+
+.fms-sub-lbl {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  text-transform: uppercase;
 }
 
 /* ==========================================================================
