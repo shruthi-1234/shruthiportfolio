@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <title>Office Tracker — Personal Product Case Study | Shruthi Sundar</title>
+  <meta name="description" content="Personal product case study of Office Tracker: An automated, lightweight location-based presence detection PWA solving seat-booking discrepancy without manual friction.">
+  
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=3.1">
+</head>
+<body class="case-study-page-wrapper">
+
+  <!-- Fixed Top Header -->
+  <header class="case-page-header">
+    <a href="index.html#work" class="case-back-btn">
+      <span>← BACK TO SELECTED WORK</span>
+    </a>
+    <a href="index.html" class="brand-pill-link">
+      <div class="brand-monogram-circle">
+        <span class="monogram-text">SS</span>
+      </div>
+      <span class="brand-title-desktop">SHRUTHI SUNDAR</span>
+    </a>
+    <span class="mono-meta">PROJECT 02 // PERSONAL PRODUCT</span>
+  </header>
+
+  <main class="site-content-flow" style="padding-top: 40px;">
+
+    <section class="editorial-section case-study-editorial" id="office-tracker">
+      <div class="section-container">
+        
+        <!-- OFFICE TRACKER -->
+        <div class="case-badge-meta reveal-item">
+          <span class="case-type-badge personal">02 // PERSONAL PRODUCT</span>
+          <span class="case-meta-tag">PWA · AUTOMATION · GEOLOCATION</span>
+        </div>
+
+        <h1 class="case-main-title reveal-item" style="font-size: clamp(38px, 6vw, 76px); margin-bottom: 24px;">OFFICE TRACKER</h1>
+
+        <div class="case-hero-quote-block reveal-item">
+          <p class="case-hero-quote">
+            "Seat booked ≠ actually went to the office."
+          </p>
+        </div>
+
+        <!-- 2-STEP EDITORIAL SCROLLYTELLING: FRICTION VS INSIGHT -->
+        <div class="editorial-scrolly-stack">
+          <div class="scrolly-step-card reveal-item">
+            <div class="story-card friction-card">
+              <span class="story-step-label">01 // THE FRICTION</span>
+              <p class="story-card-text">
+                My company's official seat-booking portal tells me which days I booked a seat, <strong>but it does not reliably tell me which days I actually went to the office</strong>. Remembering past physical presence for monthly records was manual, fuzzy, and error-prone.
+              </p>
+            </div>
+          </div>
+
+          <div class="scrolly-step-card reveal-item">
+            <div class="story-card insight-card">
+              <span class="story-step-label">02 // THE INSIGHT</span>
+              <p class="story-card-text">
+                I didn't need another heavy corporate dashboard or battery-killing continuous background GPS tracking. <strong>I just needed a single, reliable location-based presence signal captured once during peak office hours.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- THE SYSTEM ARCHITECTURE MECHANISM -->
+        <div class="mechanism-showcase-box reveal-item">
+          <div class="mechanism-header">
+            <span class="mono-tag">SYSTEM MECHANISM</span>
+            <span class="status-indicator live">AUTOMATED PRESENCE CHECK</span>
+          </div>
+
+          <div class="mechanism-flow-track">
+            <div class="mech-node">
+              <div class="mech-icon">⏰</div>
+              <div class="mech-title">iOS SHORTCUT</div>
+              <div class="mech-desc">Triggered automatically around 2:00 PM on weekdays</div>
+            </div>
+            <div class="mech-arrow">→</div>
+            <div class="mech-node">
+              <div class="mech-icon">📍</div>
+              <div class="mech-title">LOCATION CHECK</div>
+              <div class="mech-desc">Fetches current device GPS coordinates</div>
+            </div>
+            <div class="mech-arrow">→</div>
+            <div class="mech-node highlight-node">
+              <div class="mech-icon">⭕</div>
+              <div class="mech-title">~150m GEOFENCE</div>
+              <div class="mech-desc">Validates proximity to office building radius</div>
+            </div>
+            <div class="mech-arrow">→</div>
+            <div class="mech-node">
+              <div class="mech-icon">📱</div>
+              <div class="mech-title">PWA STORE</div>
+              <div class="mech-desc">Silently logs physical presence status locally</div>
+            </div>
+            <div class="mech-arrow">→</div>
+            <div class="mech-node">
+              <div class="mech-icon">📊</div>
+              <div class="mech-title">CALENDAR LOG</div>
+              <div class="mech-desc">Generates monthly verified attendance history</div>
+            </div>
+          </div>
+
+          <p class="mechanism-explanation">
+            <strong>How it works:</strong> At 2:00 PM, an iOS Shortcut triggers a single foreground GPS check. If the device is within ~150 meters of the office coordinates, it passes a verified presence token to the lightweight Progressive Web App, logging the day automatically.
+          </p>
+        </div>
+
+        <!-- PRODUCT DECISIONS & TRADE-OFFS -->
+        <div class="decisions-section-header reveal-item">
+          <span class="mono-tag">PRODUCT THINKING</span>
+          <h3 class="decisions-title">Key Product Decisions & Trade-Offs</h3>
+        </div>
+
+        <div class="decisions-grid">
+          <div class="decision-item reveal-item">
+            <div class="decision-header">
+              <span class="decision-num">01</span>
+              <h4 class="decision-name">Why 2:00 PM?</h4>
+            </div>
+            <p class="decision-body">
+              Midday is when physical office presence is most certain. It avoids false positives from morning subway commutes through the neighborhood and eliminates the risk of missing someone who leaves by 5:00 PM.
+            </p>
+          </div>
+
+          <div class="decision-item reveal-item">
+            <div class="decision-header">
+              <span class="decision-num">02</span>
+              <h4 class="decision-name">Why ~150 Meters?</h4>
+            </div>
+            <p class="decision-body">
+              Urban high-rises cause concrete GPS drift up to 80m. A 150m radius encompasses the entire building footprint while strictly excluding nearby subway transit corridors and perimeter cafes.
+            </p>
+          </div>
+
+          <div class="decision-item reveal-item">
+            <div class="decision-header">
+              <span class="decision-num">03</span>
+              <h4 class="decision-name">Inaccurate Location Handling</h4>
+            </div>
+            <p class="decision-body">
+              If GPS accuracy is degraded (error > 100m), the shortcut falls back to a 1-tap interactive prompt: "Are you at the office today?" with local timestamp recording rather than failing silently.
+            </p>
+          </div>
+
+          <div class="decision-item reveal-item">
+            <div class="decision-header">
+              <span class="decision-num">04</span>
+              <h4 class="decision-name">Minimum Useful Information</h4>
+            </div>
+            <p class="decision-body">
+              Only a binary flag (1 / 0) and date are recorded. No continuous path tracking, no battery drain, and complete personal privacy by design.
+            </p>
+          </div>
+        </div>
+
+        <!-- REAL OUTCOME STATEMENT -->
+        <div class="breakthrough-banner reveal-item" style="margin-top: 64px;">
+          <div class="fms-tag">PRODUCT OUTCOME</div>
+          <h2 class="breakthrough-title" style="font-size: clamp(24px, 3.5vw, 40px); line-height: 1.3;">
+            "A manual check became something I stopped thinking about."
+          </h2>
+          <p class="breakthrough-statement">
+            Built as a personal product to solve my own real daily friction, creating a frictionless, reliable record of physical office attendance.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- NEXT PROJECT ROUTING FOOTER -->
+    <section class="next-case-nav-section">
+      <div class="section-container">
+        <a href="job-tracker.html" class="next-case-card reveal-item">
+          <div>
+            <div class="next-case-label">NEXT PROJECT 03 // PERSONAL PRODUCT</div>
+            <h3 class="next-case-title">JOB TRACKER</h3>
+          </div>
+          <span class="next-case-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Master Footer -->
+    <footer class="master-site-footer" style="padding: 40px 0;">
+      <div class="section-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <div class="footer-left">
+          <span class="footer-brand">SHRUTHI SUNDAR</span>
+        </div>
+        <div class="footer-center">
+          <span class="footer-meta-tag">PRODUCT · TECHNOLOGY · DATA · SYSTEMS</span>
+        </div>
+        <div class="footer-right">
+          <a href="index.html#work" class="back-to-top-btn">← Back to Overview</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
