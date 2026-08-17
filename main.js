@@ -248,7 +248,106 @@
   }
 
   // =========================================================================
-  // 8. SCROLL REVEALS & EDITORIAL STORYTELLING ENGINE
+  // 8. MOBILE INTERACTION & CREATIVE SCROLL ANIMATION ENGINE
+  // =========================================================================
+
+  // --- Mobile Scroll-Linked Center Focus ---
+  function initMobileScrollFocus() {
+    if (window.innerWidth > 860) return;
+
+    const focusCards = document.querySelectorAll(
+      '.editorial-project-block, .story-card, .decision-item, .pt-card, .mechanism-showcase-box, .impact-stat-card, .timeline-entry, .next-case-card'
+    );
+    if (!focusCards.length) return;
+
+    const focusObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('mobile-focused');
+        } else {
+          entry.target.classList.remove('mobile-focused');
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.35,
+      rootMargin: '-10% 0px -20% 0px'
+    });
+
+    focusCards.forEach(card => focusObserver.observe(card));
+  }
+
+  // --- Mobile Touch Reactive Spotlight & Micro-Bounces ---
+  function initMobileTouchPhysics() {
+    const interactiveTouchCards = document.querySelectorAll(
+      '.editorial-project-block, .story-card, .decision-item, .pt-card, .mech-node, .impact-stat-card, .beyond-item, .next-case-card'
+    );
+
+    interactiveTouchCards.forEach(card => {
+      card.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        const rect = card.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+
+        card.style.setProperty('--card-touch-x', `${x}px`);
+        card.style.setProperty('--card-touch-y', `${y}px`);
+        card.classList.add('is-touch-active');
+      }, { passive: true });
+
+      card.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        const rect = card.getBoundingClientRect();
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+
+        card.style.setProperty('--card-touch-x', `${x}px`);
+        card.style.setProperty('--card-touch-y', `${y}px`);
+      }, { passive: true });
+
+      card.addEventListener('touchend', () => {
+        card.classList.remove('is-touch-active');
+      }, { passive: true });
+
+      card.addEventListener('touchcancel', () => {
+        card.classList.remove('is-touch-active');
+      }, { passive: true });
+    });
+  }
+
+  // --- Mobile Sequential Mechanism Flow Pulse ---
+  function initMobileMechanismWave() {
+    const mechanismBoxes = document.querySelectorAll('.mechanism-showcase-box');
+    if (!mechanismBoxes.length) return;
+
+    const mechObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const nodes = entry.target.querySelectorAll('.mech-node');
+          const arrows = entry.target.querySelectorAll('.mech-arrow');
+
+          nodes.forEach((node, i) => {
+            setTimeout(() => {
+              node.classList.add('node-illuminated');
+            }, i * 180);
+          });
+
+          arrows.forEach((arr, i) => {
+            setTimeout(() => {
+              arr.classList.add('arrow-streaming');
+            }, i * 180 + 90);
+          });
+
+          mechObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    mechanismBoxes.forEach(box => mechObserver.observe(box));
+  }
+
+  // =========================================================================
+  // 9. SCROLL REVEALS & EDITORIAL STORYTELLING ENGINE
   // =========================================================================
   function initScrollReveals() {
     const revealItems = document.querySelectorAll('.reveal-item');
@@ -288,12 +387,13 @@
   }
 
   // =========================================================================
-  // 9. INITIALIZATION
+  // 10. INITIALIZATION
   // =========================================================================
   function init() {
     window.addEventListener('resize', () => {
       init3DCardTilts();
       initMagneticButtons();
+      initMobileScrollFocus();
     }, { passive: true });
 
     // Desktop Pointer Events for ambient kinetic parallax
@@ -315,6 +415,11 @@
     initScrollReveals();
     initSmoothAnchors();
 
+    // Mobile Creative Animation Systems
+    initMobileScrollFocus();
+    initMobileTouchPhysics();
+    initMobileMechanismWave();
+
     requestAnimationFrame(heroAnimationLoop);
   }
 
@@ -325,3 +430,4 @@
   }
 
 })();
+

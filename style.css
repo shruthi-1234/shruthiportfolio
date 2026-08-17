@@ -3005,3 +3005,158 @@ body.nav-locked {
     gap: 16px;
   }
 }
+
+/* ==========================================================================
+   MOBILE CREATIVE ANIMATIONS & TOUCH INTERACTIONS
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .editorial-project-block,
+  .story-card,
+  .decision-item,
+  .pt-card,
+  .mechanism-showcase-box,
+  .impact-stat-card,
+  .timeline-entry,
+  .next-case-card {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.4s ease;
+  }
+
+  /* Active Center Scroll Focus State */
+  .mobile-focused {
+    border-color: rgba(216, 184, 156, 0.45) !important;
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8),
+                0 0 25px rgba(216, 184, 156, 0.12),
+                inset 0 1px 0 rgba(255, 240, 220, 0.15) !important;
+  }
+
+  .flagship-project.mobile-focused {
+    border-color: var(--accent-warm-gold) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9),
+                0 0 35px rgba(232, 122, 36, 0.2),
+                inset 0 1px 0 rgba(255, 220, 180, 0.25) !important;
+  }
+
+  .fintech-project.mobile-focused {
+    border-color: rgba(59, 177, 123, 0.6) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8),
+                0 0 25px rgba(59, 177, 123, 0.15) !important;
+  }
+
+  .streaming-project.mobile-focused {
+    border-color: rgba(232, 122, 36, 0.6) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8),
+                0 0 25px rgba(232, 122, 36, 0.15) !important;
+  }
+
+  .analytics-project.mobile-focused {
+    border-color: rgba(182, 58, 69, 0.6) !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8),
+                0 0 25px rgba(182, 58, 69, 0.15) !important;
+  }
+
+  /* Touch Reactive Dynamic Radial Spotlight on Mobile */
+  .is-touch-active {
+    transform: scale(0.985) !important;
+    transition: transform 0.15s ease, border-color 0.2s ease !important;
+    border-color: var(--accent-warm-gold) !important;
+    background: radial-gradient(
+      circle 220px at var(--card-touch-x, 50%) var(--card-touch-y, 50%),
+      rgba(216, 184, 156, 0.14),
+      rgba(10, 9, 8, 0.96) 85%
+    ) !important;
+  }
+
+  /* Luminous Shimmer on Numbers and Stat Numerals */
+  .fms-number-giant,
+  .stat-number-giant,
+  .fintech-number,
+  .amber-number,
+  .crimson-number {
+    background-size: 200% auto;
+    animation: mobileNumeralShimmer 4.5s ease-in-out infinite;
+  }
+
+  /* Sequential Mechanism Node Illuminations on Mobile */
+  .mech-node {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mech-node.node-illuminated {
+    border-color: rgba(216, 184, 156, 0.5) !important;
+    background: rgba(36, 26, 18, 0.9) !important;
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 16px rgba(216, 184, 156, 0.15);
+  }
+
+  .mech-arrow.arrow-streaming {
+    animation: mobileArrowPulse 1.8s ease-in-out infinite;
+    color: var(--accent-warm-gold);
+  }
+
+  /* Mobile Breathing Badges & Status Indicators */
+  .case-type-badge,
+  .status-indicator.live,
+  .fms-tag,
+  .mono-tag {
+    position: relative;
+  }
+
+  .status-indicator.live::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 100px;
+    border: 1px solid rgba(59, 177, 123, 0.6);
+    animation: mobileRadarPing 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    pointer-events: none;
+  }
+
+  /* Mobile Action Link Highlight on Focus */
+  .mobile-focused .project-action-link {
+    border-color: var(--accent-warm-gold);
+    color: #0A0908;
+    background: var(--accent-warm-gold);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes mobileNumeralShimmer {
+  0% {
+    filter: brightness(1) drop-shadow(0 0 0px transparent);
+  }
+  50% {
+    filter: brightness(1.2) drop-shadow(0 0 12px rgba(216, 184, 156, 0.35));
+  }
+  100% {
+    filter: brightness(1) drop-shadow(0 0 0px transparent);
+  }
+}
+
+@keyframes mobileArrowPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: rotate(90deg) scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(90deg) scale(1.18);
+    filter: drop-shadow(0 0 8px rgba(216, 184, 156, 0.6));
+  }
+}
+
+@keyframes mobileRadarPing {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
