@@ -703,75 +703,305 @@ body.nav-locked {
 }
 
 /* ==========================================================================
-   2. SECTION: SELECTED WORK (3D TILT CARDS + LIVE STREAM TELEMETRY)
+   2. SECTION: SELECTED WORK (PROJECT CARDS: MANGO FACTORY #1)
    ========================================================================== */
 
-/* ==========================================================================
-   2. SECTION INTRO: THINGS I NOTICED (EDITORIAL CHAPTER OPENER)
-   ========================================================================== */
-
-.section-noticed {
-  padding: 180px 0 110px 0;
+.section-projects {
+  padding: 160px 0;
+  border-top: 1px solid var(--border-subtle);
   position: relative;
 }
 
-.noticed-header-block {
-  max-width: 1100px;
+.section-header-block {
+  margin-bottom: 72px;
 }
 
-.noticed-headline {
-  font-family: var(--font-display);
-  font-size: clamp(38px, 6vw, 82px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  color: var(--text-titanium);
-  line-height: 1.12;
-  margin-bottom: 48px;
+.section-subtitle-lead {
+  font-size: clamp(17px, 1.8vw, 22px);
+  color: var(--text-muted);
+  font-weight: 300;
+  max-width: 800px;
+  line-height: 1.6;
+  margin-top: 16px;
 }
 
-.noticed-subtext-row {
+.editorial-projects-stack {
   display: flex;
+  flex-direction: column;
+  gap: 40px;
+  perspective: 1200px;
+}
+
+/* Interactive 3D Tilt Project Card */
+.editorial-project-block {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 56px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 56px 48px;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease-out;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.editorial-project-block::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle 360px at var(--card-mouse-x, 50%) var(--card-mouse-y, 50%),
+    rgba(216, 184, 156, 0.08),
+    transparent 80%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.editorial-project-block:hover::before {
+  opacity: 1;
+}
+
+.editorial-project-block:hover {
+  border-color: var(--border-active);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(216, 184, 156, 0.05);
+}
+
+/* FLAGSHIP PROJECT 01: MANGO FACTORY LUXURY EMPHASIS */
+.editorial-project-block.flagship-project {
+  border: 1px solid rgba(216, 184, 156, 0.35);
+  background: linear-gradient(135deg, rgba(22, 18, 15, 0.95) 0%, rgba(10, 9, 8, 0.98) 100%);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(232, 122, 36, 0.08);
+}
+
+.editorial-project-block.flagship-project:hover {
+  border-color: var(--accent-warm-gold);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(216, 184, 156, 0.15);
+}
+
+.project-left-col {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
-  gap: 48px;
-  padding-top: 36px;
-  border-top: 1px solid var(--border-subtle);
+}
+
+.project-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
-.noticed-narrative-lead {
-  font-size: clamp(18px, 2vw, 24px);
-  color: var(--text-muted);
-  font-weight: 300;
-  max-width: 680px;
-  line-height: 1.6;
+.project-index {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--accent-warm-gold);
+  text-transform: uppercase;
 }
 
-.noticed-framework-pill {
+.project-domains {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--text-dim);
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.8vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-titanium);
+  margin-bottom: 18px;
+  line-height: 1.1;
+}
+
+.project-description {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.project-metrics-pills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.metric-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--accent-warm-gold);
+  background: rgba(216, 184, 156, 0.08);
+  border: 1px solid rgba(216, 184, 156, 0.25);
+  padding: 6px 14px;
+  border-radius: 4px;
+}
+
+.project-action-link {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  background: rgba(244, 240, 232, 0.03);
-  border: 1px solid var(--border-active);
-  padding: 12px 24px;
-  border-radius: 100px;
+  text-decoration: none;
   font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--text-titanium);
+  transition: color 0.3s ease;
+  margin-top: auto;
+}
+
+.project-action-link:hover {
   color: var(--accent-warm-gold);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
-.framework-step {
-  font-weight: 600;
-}
-
-.framework-arrow {
+.action-arrow {
+  transition: transform 0.3s ease;
   color: var(--accent-crimson);
-  font-size: 13px;
-  opacity: 0.8;
+}
+
+.project-action-link:hover .action-arrow {
+  transform: translateX(8px);
+}
+
+/* Right Column: Telemetry & Showcase Stage */
+.project-right-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Flagship Big Metric Card for Mango Factory */
+.flagship-metric-showcase {
+  background: #080706;
+  border: 1px solid rgba(216, 184, 156, 0.3);
+  border-radius: 8px;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+}
+
+.fms-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.06);
+  padding-bottom: 14px;
+}
+
+.fms-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--accent-future-amber);
+}
+
+.fms-source-link {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.fms-source-link:hover {
+  color: var(--accent-warm-gold);
+}
+
+.fms-number-giant {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 6vw, 76px);
+  font-weight: 800;
+  color: var(--accent-warm-gold);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-shadow: 0 0 30px rgba(216, 184, 156, 0.2);
+}
+
+.fms-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-titanium);
+  font-weight: 700;
+}
+
+.fms-detail {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* Schematic Tech Card for Morgan Stanley Projects */
+.schematic-card {
+  background: #080706;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.schematic-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.05);
+}
+
+.schema-code {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+}
+
+.schema-status {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: #3BB17B;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.schema-status::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3BB17B;
+  box-shadow: 0 0 8px #3BB17B;
+  animation: pulseDot 1.6s infinite ease-in-out;
+}
+
+.telemetry-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+
+.mono-value {
+  color: var(--accent-warm-gold);
+  font-weight: 600;
 }
 
 /* ==========================================================================
@@ -2332,7 +2562,7 @@ body.nav-locked {
   .section-container {
     padding: 0 36px;
   }
-  .about-grid, .timeline-entry {
+  .about-grid, .timeline-entry, .editorial-project-block {
     grid-template-columns: 1fr;
     gap: 40px;
   }

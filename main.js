@@ -78,7 +78,7 @@
   function init3DCardTilts() {
     if (window.innerWidth <= 860) return; // Desktop only for optimal performance
 
-    const tiltCards = document.querySelectorAll('.story-card, .decision-item, .pt-card, .ia-card, .mech-node, .t-step, .eco-node, .beyond-item, .impact-stat-card');
+    const tiltCards = document.querySelectorAll('.editorial-project-block, .story-card, .decision-item, .pt-card, .ia-card, .mech-node, .t-step, .eco-node, .beyond-item, .impact-stat-card');
 
     tiltCards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
