@@ -248,7 +248,248 @@
   }
 
   // =========================================================================
-  // 8. MOBILE INTERACTION & CREATIVE SCROLL ANIMATION ENGINE
+  // 8. UNIQUE ANIMATION 1: LIQUID NEON SCROLL PROGRESS
+  // =========================================================================
+  function initScrollProgress() {
+    let container = document.querySelector('.scroll-progress-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.className = 'scroll-progress-container';
+      container.innerHTML = '<div class="scroll-progress-bar"></div>';
+      document.body.prepend(container);
+    }
+
+    const bar = container.querySelector('.scroll-progress-bar');
+    if (!bar) return;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll <= 0) return;
+      const pct = Math.min(100, Math.max(0, (scrollY / maxScroll) * 100));
+      bar.style.width = `${pct}%`;
+    }, { passive: true });
+  }
+
+  // =========================================================================
+  // 9. UNIQUE ANIMATION 2: AMBIENT PARTICLE CONSTELLATION CANVAS
+  // =========================================================================
+  function initAmbientConstellation() {
+    let canvas = document.getElementById('ambientConstellationCanvas');
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.id = 'ambientConstellationCanvas';
+      document.body.prepend(canvas);
+    }
+
+    const ctx = canvas.getContext('2d');
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }, { passive: true });
+
+    const PARTICLE_COUNT = window.innerWidth <= 768 ? 22 : 45;
+    const particles = [];
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        radius: Math.random() * 1.5 + 0.8,
+        alpha: Math.random() * 0.4 + 0.15
+      });
+    }
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Draw particle nodes
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = width;
+        if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(216, 184, 156, ${p.alpha})`;
+        ctx.fill();
+
+        // Connect nearby nodes
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(216, 184, 156, ${(1 - dist / 110) * 0.12})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(renderParticles);
+    }
+
+    requestAnimationFrame(renderParticles);
+  }
+
+  // =========================================================================
+  // 10. UNIQUE ANIMATION 3: FLUID MAGNETIC CURSOR AURA (DESKTOP)
+  // =========================================================================
+  function initFluidCursorAura() {
+    if (window.innerWidth <= 860) return;
+
+    let aura = document.querySelector('.fluid-cursor-aura');
+    if (!aura) {
+      aura = document.createElement('div');
+      aura.className = 'fluid-cursor-aura';
+      document.body.prepend(aura);
+    }
+
+    let mouseX = -1000;
+    let mouseY = -1000;
+    let auraX = -1000;
+    let auraY = -1000;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    }, { passive: true });
+
+    function renderAura() {
+      auraX += (mouseX - auraX) * 0.12;
+      auraY += (mouseY - auraY) * 0.12;
+
+      aura.style.transform = `translate3d(${auraX}px, ${auraY}px, 0)`;
+      requestAnimationFrame(renderAura);
+    }
+
+    requestAnimationFrame(renderAura);
+
+    // Dynamic color morphing based on hovered card type
+    document.querySelectorAll('.editorial-project-block').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        if (card.classList.contains('flagship-project')) {
+          aura.style.background = 'radial-gradient(circle, rgba(232, 122, 36, 0.12) 0%, rgba(216, 184, 156, 0.03) 50%, transparent 70%)';
+        } else if (card.classList.contains('fintech-project')) {
+          aura.style.background = 'radial-gradient(circle, rgba(59, 177, 123, 0.14) 0%, rgba(59, 177, 123, 0.03) 50%, transparent 70%)';
+        } else if (card.classList.contains('streaming-project')) {
+          aura.style.background = 'radial-gradient(circle, rgba(232, 122, 36, 0.14) 0%, rgba(232, 122, 36, 0.03) 50%, transparent 70%)';
+        } else if (card.classList.contains('analytics-project')) {
+          aura.style.background = 'radial-gradient(circle, rgba(182, 58, 69, 0.14) 0%, rgba(182, 58, 69, 0.03) 50%, transparent 70%)';
+        }
+      });
+
+      card.addEventListener('mouseleave', () => {
+        aura.style.background = 'radial-gradient(circle, rgba(216, 184, 156, 0.07) 0%, rgba(216, 184, 156, 0.015) 50%, transparent 70%)';
+      });
+    });
+  }
+
+  // =========================================================================
+  // 11. UNIQUE ANIMATION 4: CIPHER MATRIX TEXT DECODER
+  // =========================================================================
+  function initCipherDecoder() {
+    const cipherTargets = document.querySelectorAll(
+      '.mono-tag, .case-meta-tag, .pt-tag, .schema-code, .project-index, .fms-tag, .story-step-label, .decision-num'
+    );
+    if (!cipherTargets.length) return;
+
+    const chars = '01#$*+/_<>~[]{}=%!';
+
+    function decodeText(element) {
+      if (element.dataset.decoded) return;
+      element.dataset.decoded = 'true';
+
+      const originalText = element.textContent.trim();
+      let iteration = 0;
+      element.classList.add('cipher-scramble', 'is-decoding');
+
+      const interval = setInterval(() => {
+        element.textContent = originalText
+          .split('')
+          .map((letter, index) => {
+            if (index < iteration) {
+              return originalText[index];
+            }
+            if (letter === ' ') return ' ';
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join('');
+
+        if (iteration >= originalText.length) {
+          clearInterval(interval);
+          element.textContent = originalText;
+          setTimeout(() => {
+            element.classList.remove('is-decoding');
+          }, 300);
+        }
+
+        iteration += 1 / 2;
+      }, 30);
+    }
+
+    const cipherObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          decodeText(entry.target);
+          cipherObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    cipherTargets.forEach(el => cipherObserver.observe(el));
+  }
+
+  // =========================================================================
+  // 12. UNIQUE ANIMATION 5: CARD GLINT FLARE & TELEMETRY OSCILLOSCOPES
+  // =========================================================================
+  function initCardGlintsAndOscilloscopes() {
+    // Inject dynamic glass glint flares into cards
+    const cardsToGlint = document.querySelectorAll('.editorial-project-block, .pt-card, .next-case-card');
+    cardsToGlint.forEach(card => {
+      if (!card.querySelector('.card-glint-flare')) {
+        const glint = document.createElement('div');
+        glint.className = 'card-glint-flare';
+        card.appendChild(glint);
+      }
+    });
+
+    // Inject live telemetry oscilloscopes into status headers
+    const statusTags = document.querySelectorAll('.schema-status, .status-indicator.live');
+    statusTags.forEach(tag => {
+      if (!tag.querySelector('.telemetry-oscilloscope')) {
+        const osci = document.createElement('span');
+        osci.className = 'telemetry-oscilloscope';
+        osci.innerHTML = `
+          <span class="oscilloscope-bar"></span>
+          <span class="oscilloscope-bar"></span>
+          <span class="oscilloscope-bar"></span>
+          <span class="oscilloscope-bar"></span>
+          <span class="oscilloscope-bar"></span>
+        `;
+        tag.appendChild(osci);
+      }
+    });
+  }
+
+  // =========================================================================
+  // 13. MOBILE INTERACTION & CREATIVE SCROLL ANIMATION ENGINE
   // =========================================================================
 
   // --- Mobile Scroll-Linked Center Focus ---
@@ -347,7 +588,7 @@
   }
 
   // =========================================================================
-  // 9. SCROLL REVEALS & EDITORIAL STORYTELLING ENGINE
+  // 14. SCROLL REVEALS & EDITORIAL STORYTELLING ENGINE
   // =========================================================================
   function initScrollReveals() {
     const revealItems = document.querySelectorAll('.reveal-item');
@@ -387,7 +628,7 @@
   }
 
   // =========================================================================
-  // 10. INITIALIZATION
+  // 15. INITIALIZATION
   // =========================================================================
   function init() {
     window.addEventListener('resize', () => {
@@ -415,6 +656,13 @@
     initScrollReveals();
     initSmoothAnchors();
 
+    // Unique Signature Animations
+    initScrollProgress();
+    initAmbientConstellation();
+    initFluidCursorAura();
+    initCipherDecoder();
+    initCardGlintsAndOscilloscopes();
+
     // Mobile Creative Animation Systems
     initMobileScrollFocus();
     initMobileTouchPhysics();
@@ -430,4 +678,5 @@
   }
 
 })();
+
 

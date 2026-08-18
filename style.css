@@ -3160,3 +3160,219 @@ body.nav-locked {
   }
 }
 
+/* ==========================================================================
+   UNIQUE SIGNATURE ANIMATIONS (DESKTOP + MOBILE)
+   ========================================================================== */
+
+/* 1. LIQUID NEON SCROLL PROGRESS BAR */
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.03);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-crimson) 0%, var(--accent-warm-gold) 70%, #FFFFFF 100%);
+  box-shadow: 0 0 10px rgba(216, 184, 156, 0.8), 0 0 20px rgba(216, 184, 156, 0.4);
+  transition: width 0.06s ease-out;
+  position: relative;
+}
+
+.scroll-progress-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 0 0 8px #FFF, 0 0 16px var(--accent-warm-gold);
+}
+
+/* 2. AMBIENT PARTICLE CONSTELLATION BACKGROUND CANVAS */
+#ambientConstellationCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.55;
+}
+
+/* 3. FLUID MAGNETIC CURSOR AURA (DESKTOP) */
+.fluid-cursor-aura {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 440px;
+  height: 440px;
+  margin-top: -220px;
+  margin-left: -220px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(circle, rgba(216, 184, 156, 0.07) 0%, rgba(216, 184, 156, 0.015) 50%, transparent 70%);
+  transform: translate3d(-1000px, -1000px, 0);
+  transition: opacity 0.4s ease, background 0.6s ease;
+  mix-blend-mode: screen;
+}
+
+@media (max-width: 860px) {
+  .fluid-cursor-aura {
+    display: none;
+  }
+}
+
+/* 4. LASER BORDER-BEAM SCANNER ON HOVER & IN-VIEW FOCUS */
+.editorial-project-block,
+.pt-card,
+.story-card,
+.impact-stat-card,
+.timeline-entry,
+.next-case-card {
+  position: relative;
+}
+
+.editorial-project-block::after,
+.pt-card::after,
+.impact-stat-card::after,
+.next-case-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    var(--beam-angle, 0deg),
+    transparent 0%,
+    transparent 65%,
+    rgba(216, 184, 156, 0.7) 85%,
+    rgba(255, 255, 255, 0.95) 92%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.editorial-project-block:hover::after,
+.editorial-project-block.mobile-focused::after,
+.pt-card:hover::after,
+.pt-card.mobile-focused::after,
+.impact-stat-card:hover::after,
+.impact-stat-card.mobile-focused::after,
+.next-case-card:hover::after,
+.next-case-card.mobile-focused::after {
+  opacity: 1;
+  animation: rotateLaserBeam 3.5s linear infinite;
+}
+
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotateLaserBeam {
+  from {
+    --beam-angle: 0deg;
+  }
+  to {
+    --beam-angle: 360deg;
+  }
+}
+
+/* 5. DYNAMIC CARD GLINT & LIGHT-LEAK FLARE */
+.card-glint-flare {
+  position: absolute;
+  top: 0;
+  left: -160%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.0) 42%,
+    rgba(216, 184, 156, 0.09) 50%,
+    rgba(255, 255, 255, 0.16) 53%,
+    transparent 66%
+  );
+  pointer-events: none;
+  transform: skewX(-20deg);
+  border-radius: inherit;
+}
+
+.editorial-project-block:hover .card-glint-flare,
+.editorial-project-block.mobile-focused .card-glint-flare,
+.pt-card:hover .card-glint-flare,
+.next-case-card:hover .card-glint-flare {
+  animation: cardGlintSweep 1.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardGlintSweep {
+  0% {
+    left: -160%;
+  }
+  100% {
+    left: 220%;
+  }
+}
+
+/* 6. CIPHER DECODING TEXT SCRAMBLE */
+.cipher-scramble {
+  display: inline-block;
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.cipher-scramble.is-decoding {
+  color: var(--accent-warm-gold) !important;
+  text-shadow: 0 0 10px rgba(216, 184, 156, 0.7);
+}
+
+/* 7. INTERACTIVE TELEMETRY OSCILLOSCOPE */
+.telemetry-oscilloscope {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+  padding: 0 4px;
+  vertical-align: middle;
+}
+
+.oscilloscope-bar {
+  width: 2px;
+  background: var(--accent-warm-gold);
+  border-radius: 1px;
+  height: 30%;
+  animation: osciPulse 1.2s ease-in-out infinite alternate;
+}
+
+.oscilloscope-bar:nth-child(1) { animation-delay: 0.1s; }
+.oscilloscope-bar:nth-child(2) { animation-delay: 0.35s; }
+.oscilloscope-bar:nth-child(3) { animation-delay: 0.2s; }
+.oscilloscope-bar:nth-child(4) { animation-delay: 0.5s; }
+.oscilloscope-bar:nth-child(5) { animation-delay: 0.15s; }
+
+@keyframes osciPulse {
+  0% { height: 20%; opacity: 0.4; }
+  50% { height: 95%; opacity: 1; filter: drop-shadow(0 0 4px var(--accent-warm-gold)); }
+  100% { height: 40%; opacity: 0.6; }
+}
+
+
