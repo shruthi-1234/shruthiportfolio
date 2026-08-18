@@ -460,8 +460,8 @@ body.nav-locked {
 
 .hero-portrait-container {
   position: relative;
-  width: clamp(370px, 31vw, 510px);
-  aspect-ratio: 371 / 556;
+  width: clamp(380px, 32vw, 520px);
+  aspect-ratio: 760 / 1018;
   max-width: 90vw;
   margin: 0 auto;
   user-select: none;
@@ -2810,7 +2810,7 @@ body.nav-locked {
     height: clamp(340px, 48vh, 460px);
     max-height: 48vh;
     width: auto;
-    aspect-ratio: 371 / 556;
+    aspect-ratio: 760 / 1018;
     max-width: 88vw;
     margin: 0 auto;
   }
@@ -2866,7 +2866,7 @@ body.nav-locked {
   .hero-portrait-container {
     height: clamp(320px, 48vh, 430px);
     max-height: 48vh;
-    aspect-ratio: 371 / 556;
+    aspect-ratio: 760 / 1018;
     max-width: 88vw;
   }
   .hero-statement-section {
