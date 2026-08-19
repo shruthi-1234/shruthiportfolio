@@ -3376,4 +3376,291 @@ body.nav-locked {
   100% { height: 40%; opacity: 0.6; }
 }
 
+/* ==========================================================================
+   OFFICE TRACKER LIVE PWA & APP SHOWCASE STYLES
+   ========================================================================== */
+
+.project-action-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.live-app-action-link {
+  background: rgba(232, 185, 63, 0.12);
+  border: 1px solid rgba(232, 185, 63, 0.35);
+  color: #e8b93f;
+  margin-top: 0;
+}
+
+.live-app-action-link .action-arrow {
+  color: #e8b93f;
+}
+
+.live-app-action-link:hover {
+  background: #e8b93f;
+  border-color: #e8b93f;
+  color: #0c0e10;
+  box-shadow: 0 8px 24px rgba(232, 185, 63, 0.35);
+}
+
+.live-app-action-link:hover .action-arrow {
+  color: #0c0e10;
+}
+
+/* Live App Hero Bar in Case Study */
+.live-app-hero-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(232, 185, 63, 0.09) 0%, rgba(24, 21, 18, 0.95) 100%);
+  border: 1px solid rgba(232, 185, 63, 0.32);
+  border-radius: 12px;
+  padding: 22px 32px;
+  margin-bottom: 48px;
+  gap: 24px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.live-app-hero-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(180deg, #e8b93f, #3bb17b);
+}
+
+.live-app-hero-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.live-app-hero-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-titanium);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.live-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3bb17b;
+  box-shadow: 0 0 10px #3bb17b;
+  display: inline-block;
+  animation: pulseDot 1.6s infinite ease-in-out;
+}
+
+.live-app-hero-desc {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.live-launch-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #e8b93f;
+  color: #121416;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 13px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(232, 185, 63, 0.35);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.live-launch-btn-primary:hover {
+  background: #f5cb5c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(232, 185, 63, 0.55);
+  color: #050607;
+}
+
+.live-launch-btn-primary .btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.live-launch-btn-primary:hover .btn-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* App Visual Showcase / Device Frame Gallery */
+.app-showcase-section {
+  margin: 56px 0 72px 0;
+}
+
+.showcase-header {
+  margin-bottom: 36px;
+}
+
+.showcase-header .mono-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: #e8b93f;
+  text-transform: uppercase;
+}
+
+.showcase-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 700;
+  color: var(--text-titanium);
+  margin-top: 8px;
+  letter-spacing: -0.02em;
+}
+
+.app-devices-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 36px;
+  align-items: stretch;
+}
+
+.device-showcase-card {
+  background: #08090b;
+  border: 1px solid rgba(244, 240, 232, 0.1);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+}
+
+.device-showcase-card:hover {
+  border-color: rgba(232, 185, 63, 0.45);
+  transform: translateY(-6px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 35px rgba(232, 185, 63, 0.1);
+}
+
+.device-badge-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.07);
+}
+
+.device-badge-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #e8b93f;
+}
+
+.device-badge-tag {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobile-phone-frame {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 36px;
+  border: 7px solid #23272d;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.09);
+  overflow: hidden;
+  background: #1c1f22;
+  margin-bottom: 26px;
+  position: relative;
+}
+
+.mobile-phone-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.device-showcase-card:hover .mobile-phone-frame img {
+  transform: scale(1.02);
+}
+
+.device-feature-points {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: auto;
+  border-top: 1px solid rgba(244, 240, 232, 0.06);
+  padding-top: 20px;
+}
+
+.feature-point-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.feature-bullet {
+  color: #e8b93f;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.feature-point-row strong {
+  color: var(--text-titanium);
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .live-app-hero-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+  }
+  .live-launch-btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+  .app-devices-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .mobile-phone-frame {
+    max-width: 290px;
+  }
+}
+
+
 

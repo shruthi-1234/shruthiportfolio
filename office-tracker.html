@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=3.6">
+  <link rel="stylesheet" href="style.css?v=3.7">
 </head>
 <body class="case-study-page-wrapper">
 
@@ -37,10 +37,10 @@
     <section class="editorial-section case-study-editorial" id="office-tracker">
       <div class="section-container">
         
-        <!-- OFFICE TRACKER -->
+        <!-- OFFICE TRACKER HEADER META -->
         <div class="case-badge-meta reveal-item">
           <span class="case-type-badge personal">02 // PERSONAL PRODUCT</span>
-          <span class="case-meta-tag">PWA · AUTOMATION · GEOLOCATION</span>
+          <span class="case-meta-tag">PWA · AUTOMATION · GEOLOCATION · CLIENT-SIDE</span>
         </div>
 
         <h1 class="case-main-title reveal-item" style="font-size: clamp(38px, 6vw, 76px); margin-bottom: 24px;">OFFICE TRACKER</h1>
@@ -49,6 +49,23 @@
           <p class="case-hero-quote">
             "Seat booked ≠ actually went to the office."
           </p>
+        </div>
+
+        <!-- LIVE PRODUCTION PWA LAUNCH BAR -->
+        <div class="live-app-hero-bar reveal-item">
+          <div class="live-app-hero-info">
+            <div class="live-app-hero-title">
+              <span class="live-pulse-dot"></span>
+              <span>LIVE WEB APPLICATION (PWA)</span>
+            </div>
+            <p class="live-app-hero-desc">
+              Office Tracker is live in production. Zero installation friction — works directly in any mobile or desktop browser with on-device GPS geofencing.
+            </p>
+          </div>
+          <a href="https://myofficetracker.netlify.app" target="_blank" rel="noopener" class="live-launch-btn-primary">
+            <span>LAUNCH LIVE APP</span>
+            <span class="btn-arrow">↗</span>
+          </a>
         </div>
 
         <!-- 2-STEP EDITORIAL SCROLLYTELLING: FRICTION VS INSIGHT -->
@@ -69,6 +86,76 @@
                 I didn't need another heavy corporate dashboard or battery-killing continuous background GPS tracking. <strong>I just needed a single, reliable location-based presence signal captured once during peak office hours.</strong>
               </p>
             </div>
+          </div>
+        </div>
+
+        <!-- VISUAL PRODUCT INTERFACE SHOWCASE -->
+        <div class="app-showcase-section reveal-item">
+          <div class="showcase-header">
+            <span class="mono-tag">LIVE INTERFACE ARCHITECTURE</span>
+            <h3 class="showcase-title">Designed for Zero-Cognitive-Load Attendance</h3>
+          </div>
+
+          <div class="app-devices-grid">
+            
+            <!-- SCREEN 01: MAIN DASHBOARD -->
+            <div class="device-showcase-card reveal-item">
+              <div class="device-badge-top">
+                <span class="device-badge-label">SCREEN 01 // PRESENCE DASHBOARD</span>
+                <span class="device-badge-tag">DAILY UI</span>
+              </div>
+              <div class="mobile-phone-frame">
+                <img src="assets/office-tracker-main.png" alt="Office Tracker main screen showing ticket stamp progress and calendar" loading="lazy">
+              </div>
+              <div class="device-feature-points">
+                <div class="feature-point-row">
+                  <span class="feature-bullet">›</span>
+                  <span><strong>Ticket-Punch Mental Model:</strong> Giant <code>7 / 10 days</code> counter with dynamic monthly deficit tracker and checked stamp tokens.</span>
+                </div>
+                <div class="feature-point-row">
+                  <span class="feature-bullet">›</span>
+                  <span><strong>1-Tap Manual Override:</strong> Prominent golden action button to instantly mark or undo today's attendance when working remote.</span>
+                </div>
+                <div class="feature-point-row">
+                  <span class="feature-bullet">›</span>
+                  <span><strong>Live Geofence Telemetry:</strong> Real-time Haversine distance readout (<code>~1456m away</code>) validating office proximity.</span>
+                </div>
+                <div class="feature-point-row">
+                  <span class="feature-bullet">›</span>
+                  <span><strong>Interactive Calendar Heatmap:</strong> Monthly matrix with active-day highlighting, weekend markers, and tap-to-toggle editing.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SCREEN 02: SETTINGS & GEOLOCATION MODAL -->
+            <div class="device-showcase-card reveal-item">
+              <div class="device-badge-top">
+                <span class="device-badge-label">SCREEN 02 // GEOLOCATION SETTINGS</span>
+                <span class="device-badge-tag">SYSTEM CONTROLS</span>
+              </div>
+              <div class="mobile-phone-frame">
+                <img src="assets/office-tracker-settings.png" alt="Office Tracker settings modal showing geofence radius and monthly target options" loading="lazy">
+              </div>
+              <div class="device-feature-points">
+                <div class="feature-point-row">
+                  <span class="feature-bullet">›</span>
+                  <span><strong>1-Tap Coordinate Pinning:</strong> "Save current location as office" latches latitude/longitude directly from device GPS.</span>
+                </div>
+                <div class="feature-point-row">
+                  <span class="feature-bullet">›</span>
+                  <span><strong>Configurable Geofence Radius:</strong> Customizable detection radius (default <code>150m</code>) preventing transit false positives.</span>
+                </div>
+                <div class="feature-point-row">
+                  <span class="feature-bullet">›</span>
+                  <span><strong>Custom Monthly Quotas:</strong> Flexible goal adjustment (e.g. 10 days) adapting to hybrid or strict office policies.</span>
+                </div>
+                <div class="feature-point-row">
+                  <span class="feature-bullet">›</span>
+                  <span><strong>100% Client-Side Privacy:</strong> Zero cloud servers or telemetry tracking — entire database persisted in browser <code>localStorage</code>.</span>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -112,7 +199,7 @@
           </div>
 
           <p class="mechanism-explanation">
-            <strong>How it works:</strong> At 2:00 PM, an iOS Shortcut triggers a single foreground GPS check. If the device is within ~150 meters of the office coordinates, it passes a verified presence token to the lightweight Progressive Web App, logging the day automatically.
+            <strong>How it works:</strong> At 2:00 PM, an iOS Shortcut triggers a single foreground GPS check. If the device is within ~150 meters of the saved office coordinates (computed via spherical Haversine formula), it marks the day automatically in the lightweight Progressive Web App.
           </p>
         </div>
 
@@ -146,33 +233,38 @@
           <div class="decision-item reveal-item">
             <div class="decision-header">
               <span class="decision-num">03</span>
-              <h4 class="decision-name">Inaccurate Location Handling</h4>
+              <h4 class="decision-name">Retro Ticket Stamp UX</h4>
             </div>
             <p class="decision-body">
-              If GPS accuracy is degraded (error > 100m), the shortcut falls back to a 1-tap interactive prompt: "Are you at the office today?" with local timestamp recording rather than failing silently.
+              Rather than generic checkboxes or sterile corporate tables, a tactile punch-card ticket UI gamifies monthly goal completion and creates immediate, satisfying visual progress feedback.
             </p>
           </div>
 
           <div class="decision-item reveal-item">
             <div class="decision-header">
               <span class="decision-num">04</span>
-              <h4 class="decision-name">Minimum Useful Information</h4>
+              <h4 class="decision-name">Zero-Cloud Privacy</h4>
             </div>
             <p class="decision-body">
-              Only a binary flag (1 / 0) and date are recorded. No continuous path tracking, no battery drain, and complete personal privacy by design.
+              Only a binary flag (1 / 0) and date are stored locally in the browser's <code>localStorage</code>. No continuous path tracking, no battery drain, and zero personal telemetry sent to any external server.
             </p>
           </div>
         </div>
 
-        <!-- REAL OUTCOME STATEMENT -->
+        <!-- REAL OUTCOME STATEMENT & LIVE CTA -->
         <div class="breakthrough-banner reveal-item" style="margin-top: 64px;">
           <div class="fms-tag">PRODUCT OUTCOME</div>
           <h2 class="breakthrough-title" style="font-size: clamp(24px, 3.5vw, 40px); line-height: 1.3;">
             "A manual check became something I stopped thinking about."
           </h2>
-          <p class="breakthrough-statement">
+          <p class="breakthrough-statement" style="margin-bottom: 28px;">
             Built as a personal product to solve my own real daily friction, creating a frictionless, reliable record of physical office attendance.
           </p>
+          <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+            <a href="https://myofficetracker.netlify.app" target="_blank" rel="noopener" class="live-launch-btn-primary" style="font-size: 12px; padding: 14px 30px;">
+              <span>TRY THE LIVE APP ↗</span>
+            </a>
+          </div>
         </div>
 
       </div>
@@ -208,6 +300,6 @@
 
   </main>
 
-  <script src="main.js?v=3.6"></script>
+  <script src="main.js?v=3.7"></script>
 </body>
 </html>
