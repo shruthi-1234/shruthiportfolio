@@ -175,22 +175,137 @@
   }
 
   // =========================================================================
-  // 5. DUAL DISCIPLINE SYNTHESIS BRIDGE PULSE (SECTION 05)
+  // 5. INTERACTIVE SKILLS & CAPABILITIES MATRIX (SECTION 06)
   // =========================================================================
-  function initDualDisciplineBridge() {
-    const bridgeHub = document.querySelector('.discipline-bridge-hub');
-    const skillItems = document.querySelectorAll('.skill-item');
+  const CAPABILITIES_DATA = {
+    strategy: {
+      title: 'Product Strategy in Action',
+      desc: 'Formulated 0-to-1 direct-to-consumer and product strategy for <strong>The Mango Factory</strong> (scaling to ₹1 Cr+ revenue) and structured low-friction personal products.',
+      projects: [
+        { title: 'The Mango Factory ↗', url: 'mango-factory.html' },
+        { title: 'Office Tracker ↗', url: 'office-tracker.html' },
+        { title: 'Job Tracker ↗', url: 'job-tracker.html' }
+      ],
+      highlightCats: ['strategy']
+    },
+    discovery: {
+      title: 'Product Discovery in Action',
+      desc: 'Identified unmet user problems: spontaneous walk-in dining availability (<strong>Dine-In Now</strong>), attendance discrepancy (<strong>Office Tracker</strong>), and AI fit confidence in e-commerce.',
+      projects: [
+        { title: 'Dine-In Now ↗', url: 'dine-in-now.html' },
+        { title: 'Office Tracker ↗', url: 'office-tracker.html' },
+        { title: 'AI Virtual Try-On ↗', url: 'ai-virtual-tryon.html' }
+      ],
+      highlightCats: ['discovery']
+    },
+    research: {
+      title: 'User Research & Segmentation in Action',
+      desc: 'Segmented customer cohorts for <strong>Mango Factory</strong> (authenticity seekers vs health-conscious parents vs corporate gifters) and conducted user journey mapping for job applicants.',
+      projects: [
+        { title: 'The Mango Factory ↗', url: 'mango-factory.html' },
+        { title: 'Job Tracker ↗', url: 'job-tracker.html' },
+        { title: 'Ownly ↗', url: 'ownly.html' }
+      ],
+      highlightCats: ['research']
+    },
+    roadmapping: {
+      title: 'Roadmapping & Prioritization in Action',
+      desc: 'Structured MVP stage funnels, defined milestone releases for 0-to-1 products, and balanced technical debt vs customer velocity across cross-functional teams.',
+      projects: [
+        { title: 'Office Tracker ↗', url: 'office-tracker.html' },
+        { title: 'Job Tracker ↗', url: 'job-tracker.html' },
+        { title: 'Morgan Stanley RLT ↗', url: '#experience' }
+      ],
+      highlightCats: ['roadmapping']
+    },
+    gtm: {
+      title: 'GTM & Launch in Action',
+      desc: 'Drove seasonal D2C customer acquisition, unboxing retention loops, and live PWA deployment on production web infrastructure.',
+      projects: [
+        { title: 'The Mango Factory (Instagram) ↗', url: 'https://www.instagram.com/themangofactory.in' },
+        { title: 'Office Tracker Live PWA ↗', url: 'https://myofficetracker.netlify.app' }
+      ],
+      highlightCats: ['gtm']
+    },
+    agile: {
+      title: 'Agile & Cross-Functional Leadership in Action',
+      desc: 'Led sprint rituals, technical estimation, backlog grooming, and rapid feedback cycles bridging enterprise engineering teams, designers, and business stakeholders.',
+      projects: [
+        { title: 'Morgan Stanley Experience ↗', url: '#experience' },
+        { title: 'The Mango Factory Ops ↗', url: 'mango-factory.html' }
+      ],
+      highlightCats: ['agile']
+    },
+    data: {
+      title: 'Data-Driven Decisions in Action',
+      desc: 'Automated high-scale enterprise liquidity pipelines at <strong>Morgan Stanley</strong> (100 GB+ daily streaming scale), reducing reporting latency from 40 min to 12 sec with zero margin for error.',
+      projects: [
+        { title: 'Morgan Stanley Architecture ↗', url: '#experience' },
+        { title: 'The Mango Factory Unit Economics ↗', url: 'mango-factory.html' }
+      ],
+      highlightCats: ['data']
+    },
+    abtesting: {
+      title: 'A/B Testing & Experimentation in Action',
+      desc: 'Formulated hypothesis-driven experiment loops for packaging transit durability, customer conversion funnels, and fit confidence UX indicators in AI retail.',
+      projects: [
+        { title: 'AI Virtual Try-On ↗', url: 'ai-virtual-tryon.html' },
+        { title: 'The Mango Factory ↗', url: 'mango-factory.html' }
+      ],
+      highlightCats: ['discovery', 'research']
+    }
+  };
 
-    if (!bridgeHub || !skillItems.length) return;
+  function initInteractiveSkillsMatrix() {
+    const cards = document.querySelectorAll('.capability-card');
+    const evidenceDrawer = document.getElementById('capabilityEvidence');
+    const evidenceTitle = document.getElementById('evidenceTitle');
+    const evidenceDesc = document.getElementById('evidenceDesc');
+    const evidenceProjects = document.getElementById('evidenceProjects');
+    const competencyPills = document.querySelectorAll('.competency-pill');
 
-    skillItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        bridgeHub.classList.add('is-active');
+    if (!cards.length || !evidenceDrawer) return;
+
+    function selectCapability(capKey) {
+      const data = CAPABILITIES_DATA[capKey];
+      if (!data) return;
+
+      // Update active card state
+      cards.forEach(card => {
+        const isActive = card.getAttribute('data-capability') === capKey;
+        card.classList.toggle('is-active', isActive);
       });
-      item.addEventListener('mouseleave', () => {
-        bridgeHub.classList.remove('is-active');
+
+      // Update evidence drawer content
+      if (evidenceTitle) evidenceTitle.textContent = data.title;
+      if (evidenceDesc) evidenceDesc.innerHTML = data.desc;
+      if (evidenceProjects) {
+        evidenceProjects.innerHTML = data.projects.map(p => 
+          `<a href="${p.url}" ${p.url.startsWith('http') ? 'target="_blank" rel="noopener"' : ''} class="evidence-pill">${p.title}</a>`
+        ).join('');
+      }
+
+      // Highlight related competency pills
+      competencyPills.forEach(pill => {
+        const pillCat = pill.getAttribute('data-pill-cat');
+        const shouldHighlight = data.highlightCats.includes(pillCat) || (capKey === 'data' && pillCat === 'data') || (capKey === 'agile' && pillCat === 'agile');
+        pill.classList.toggle('is-highlighted', shouldHighlight);
+      });
+    }
+
+    cards.forEach(card => {
+      const capKey = card.getAttribute('data-capability');
+      card.addEventListener('click', () => selectCapability(capKey));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          selectCapability(capKey);
+        }
       });
     });
+
+    // Initial highlight for strategy
+    selectCapability('strategy');
   }
 
   // =========================================================================
@@ -650,7 +765,7 @@
     init3DCardTilts();
     initCounterObservers();
     initTelemetryLiveWave();
-    initDualDisciplineBridge();
+    initInteractiveSkillsMatrix();
     initMagneticButtons();
     initMobileNav();
     initScrollReveals();
