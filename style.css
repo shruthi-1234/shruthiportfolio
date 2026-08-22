@@ -2110,26 +2110,26 @@ body.nav-locked {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(0, 240, 255, 0.06);
-  border: 1px solid rgba(0, 240, 255, 0.2);
+  background: rgba(216, 184, 156, 0.08);
+  border: 1px solid rgba(216, 184, 156, 0.25);
   padding: 6px 14px;
   border-radius: 100px;
   margin-bottom: 16px;
 }
 
-.pulse-dot-cyan {
+.pulse-dot-gold {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #00f0ff;
-  box-shadow: 0 0 10px #00f0ff;
+  background: var(--accent-warm-gold);
+  box-shadow: 0 0 10px var(--accent-warm-gold);
   display: inline-block;
-  animation: pulseDotCyan 1.8s infinite ease-in-out;
+  animation: pulseDotGold 1.8s infinite ease-in-out;
 }
 
-@keyframes pulseDotCyan {
+@keyframes pulseDotGold {
   0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 16px #00f0ff; }
+  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 16px var(--accent-warm-gold); }
 }
 
 .skills-main-heading {
@@ -2151,8 +2151,8 @@ body.nav-locked {
 }
 
 .capability-card {
-  background: #090c10;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: #080706;
+  border: 1px solid rgba(244, 240, 232, 0.08);
   border-radius: 12px;
   padding: 24px 28px 22px;
   cursor: pointer;
@@ -2173,16 +2173,16 @@ body.nav-locked {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at top left, rgba(0, 240, 255, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle at top left, rgba(216, 184, 156, 0.1) 0%, transparent 70%);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
 
 .capability-card:hover {
-  border-color: rgba(0, 240, 255, 0.35);
+  border-color: rgba(216, 184, 156, 0.4);
   transform: translateY(-3px);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 240, 255, 0.06);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(216, 184, 156, 0.08);
 }
 
 .capability-card:hover::before {
@@ -2190,9 +2190,9 @@ body.nav-locked {
 }
 
 .capability-card.is-active {
-  border-color: #00f0ff;
-  background: #0d1218;
-  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 240, 255, 0.18);
+  border-color: var(--accent-warm-gold);
+  background: #12100e;
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.9), 0 0 30px rgba(216, 184, 156, 0.18);
   transform: translateY(-3px);
 }
 
@@ -2226,9 +2226,9 @@ body.nav-locked {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: #00f0ff;
-  background: rgba(0, 240, 255, 0.08);
-  border: 1px solid rgba(0, 240, 255, 0.25);
+  color: var(--accent-warm-gold);
+  background: rgba(216, 184, 156, 0.1);
+  border: 1px solid rgba(216, 184, 156, 0.28);
   padding: 4px 10px;
   border-radius: 6px;
   text-transform: uppercase;
@@ -2246,25 +2246,25 @@ body.nav-locked {
 .meter-seg {
   flex: 1;
   height: 100%;
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 2px;
   transition: all 0.35s ease;
 }
 
 .meter-seg.filled {
-  background: #00f0ff;
-  box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+  background: var(--accent-warm-gold);
+  box-shadow: 0 0 8px rgba(216, 184, 156, 0.6);
 }
 
 .capability-card.is-active .meter-seg.filled {
-  background: #38bdf8;
-  box-shadow: 0 0 12px rgba(56, 189, 248, 0.9);
+  background: var(--accent-future-amber);
+  box-shadow: 0 0 12px rgba(232, 122, 36, 0.85);
 }
 
 /* Interactive Where Applied Evidence Drawer */
 .capability-evidence-drawer {
-  background: linear-gradient(135deg, rgba(0, 240, 255, 0.06) 0%, rgba(13, 18, 24, 0.95) 100%);
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  background: linear-gradient(135deg, rgba(216, 184, 156, 0.07) 0%, rgba(18, 16, 14, 0.95) 100%);
+  border: 1px solid rgba(216, 184, 156, 0.3);
   border-radius: 12px;
   padding: 28px 32px;
   margin-bottom: 36px;
@@ -2281,7 +2281,7 @@ body.nav-locked {
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, #00f0ff, #2dd4bf);
+  background: linear-gradient(180deg, var(--accent-warm-gold), var(--accent-future-amber));
 }
 
 .evidence-header {
@@ -2297,12 +2297,12 @@ body.nav-locked {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.2em;
-  color: #00f0ff;
+  color: var(--accent-warm-gold);
   text-transform: uppercase;
-  background: rgba(0, 240, 255, 0.12);
+  background: rgba(216, 184, 156, 0.12);
   padding: 3px 10px;
   border-radius: 4px;
-  border: 1px solid rgba(0, 240, 255, 0.25);
+  border: 1px solid rgba(216, 184, 156, 0.28);
 }
 
 .evidence-title {
@@ -2336,9 +2336,9 @@ body.nav-locked {
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: #e6edf3;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-titanium);
+  background: rgba(244, 240, 232, 0.04);
+  border: 1px solid rgba(244, 240, 232, 0.15);
   padding: 8px 16px;
   border-radius: 6px;
   text-decoration: none;
@@ -2349,11 +2349,11 @@ body.nav-locked {
 }
 
 .evidence-pill:hover {
-  background: #00f0ff;
-  border-color: #00f0ff;
-  color: #080c10;
+  background: var(--accent-warm-gold);
+  border-color: var(--accent-warm-gold);
+  color: #080706;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 240, 255, 0.35);
+  box-shadow: 0 6px 18px rgba(216, 184, 156, 0.35);
 }
 
 /* 3-Column Categorized Pills / Badges */
@@ -2364,8 +2364,8 @@ body.nav-locked {
 }
 
 .category-block {
-  background: #07090c;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #080706;
+  border: 1px solid rgba(244, 240, 232, 0.07);
   border-radius: 12px;
   padding: 26px 24px;
   display: flex;
@@ -2375,7 +2375,7 @@ body.nav-locked {
 }
 
 .category-block:hover {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(216, 184, 156, 0.25);
 }
 
 .category-title {
@@ -2399,8 +2399,8 @@ body.nav-locked {
   font-family: var(--font-sans);
   font-size: 13px;
   color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(244, 240, 232, 0.03);
+  border: 1px solid rgba(244, 240, 232, 0.08);
   padding: 6px 13px;
   border-radius: 100px;
   transition: all 0.25s ease;
@@ -2410,10 +2410,10 @@ body.nav-locked {
 
 .competency-pill:hover,
 .competency-pill.is-highlighted {
-  color: #00f0ff;
-  border-color: rgba(0, 240, 255, 0.45);
-  background: rgba(0, 240, 255, 0.08);
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
+  color: var(--accent-warm-gold);
+  border-color: rgba(216, 184, 156, 0.5);
+  background: rgba(216, 184, 156, 0.1);
+  box-shadow: 0 0 12px rgba(216, 184, 156, 0.2);
   transform: translateY(-1px);
 }
 
