@@ -1010,6 +1010,17 @@ body.nav-locked {
   box-shadow: 0 8px 20px rgba(216, 184, 156, 0.25);
 }
 
+.view-all-work-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.view-all-work-link {
+  padding: 14px 28px;
+  border-color: rgba(216, 184, 156, 0.3);
+}
+
 .action-arrow {
   transition: transform 0.3s ease;
   color: var(--accent-crimson);
