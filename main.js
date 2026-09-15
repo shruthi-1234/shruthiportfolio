@@ -517,61 +517,6 @@
   }
 
   // =========================================================================
-  // 11. UNIQUE ANIMATION 4: CIPHER MATRIX TEXT DECODER
-  // =========================================================================
-  function initCipherDecoder() {
-    const cipherTargets = document.querySelectorAll(
-      '.mono-tag, .case-meta-tag, .pt-tag, .schema-code, .project-index, .fms-tag, .story-step-label, .decision-num'
-    );
-    if (!cipherTargets.length) return;
-
-    const chars = '01#$*+/_<>~[]{}=%!';
-
-    function decodeText(element) {
-      if (element.dataset.decoded) return;
-      element.dataset.decoded = 'true';
-
-      const originalText = element.textContent.trim();
-      let iteration = 0;
-      element.classList.add('cipher-scramble', 'is-decoding');
-
-      const interval = setInterval(() => {
-        element.textContent = originalText
-          .split('')
-          .map((letter, index) => {
-            if (index < iteration) {
-              return originalText[index];
-            }
-            if (letter === ' ') return ' ';
-            return chars[Math.floor(Math.random() * chars.length)];
-          })
-          .join('');
-
-        if (iteration >= originalText.length) {
-          clearInterval(interval);
-          element.textContent = originalText;
-          setTimeout(() => {
-            element.classList.remove('is-decoding');
-          }, 300);
-        }
-
-        iteration += 1 / 2;
-      }, 30);
-    }
-
-    const cipherObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          decodeText(entry.target);
-          cipherObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    cipherTargets.forEach(el => cipherObserver.observe(el));
-  }
-
-  // =========================================================================
   // 12. UNIQUE ANIMATION 5: CARD GLINT FLARE & TELEMETRY OSCILLOSCOPES
   // =========================================================================
   function initCardGlintsAndOscilloscopes() {
@@ -709,6 +654,10 @@
     const revealItems = document.querySelectorAll('.reveal-item');
     if (!revealItems.length) return;
 
+    // Only switch items to the hidden->fade-in state once the observer is
+    // actually running, so content is never invisible before this point.
+    document.documentElement.classList.add('js-reveal');
+
     const observer = new IntersectionObserver((entries, obs) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -718,8 +667,12 @@
       });
     }, {
       root: null,
-      threshold: 0.08,
-      rootMargin: '0px 0px -30px 0px'
+      threshold: 0.01,
+      // Positive bottom margin extends the trigger zone below the fold, so
+      // items start fading in before they're scrolled into view — this keeps
+      // fast scrolling (or jumping via End/PageDown) from outrunning the
+      // animation and showing a blank section.
+      rootMargin: '0px 0px 300px 0px'
     });
 
     revealItems.forEach(el => observer.observe(el));
@@ -775,7 +728,6 @@
     initScrollProgress();
     initAmbientConstellation();
     initFluidCursorAura();
-    initCipherDecoder();
     initCardGlintsAndOscilloscopes();
 
     // Mobile Creative Animation Systems
