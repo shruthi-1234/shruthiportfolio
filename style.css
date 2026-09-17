@@ -227,6 +227,21 @@ body.nav-locked {
   transform: translateX(6px);
 }
 
+.nav-item-resume-mobile {
+  color: var(--accent-warm-gold);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 20px;
+  margin-top: 4px;
+}
+
+.nav-item-resume-mobile .m-num {
+  color: var(--accent-warm-gold);
+}
+
+.nav-item-resume-mobile:hover, .nav-item-resume-mobile:active {
+  color: var(--accent-warm-gold);
+}
+
 .mobile-nav-footer {
   padding-top: 24px;
   border-top: 1px solid var(--border-subtle);
@@ -348,6 +363,23 @@ body.nav-locked {
 
 .nav-item:hover::after {
   width: 100%;
+}
+
+.nav-resume-btn {
+  color: var(--accent-warm-gold);
+  border: 1px solid rgba(216, 184, 156, 0.4);
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+.nav-resume-btn::after {
+  display: none;
+}
+
+.nav-resume-btn:hover {
+  background: var(--accent-warm-gold);
+  color: #0A0908;
+  border-color: var(--accent-warm-gold);
 }
 
 /* Mobile Dropdown Trigger Button */
@@ -2862,6 +2894,32 @@ body.nav-locked {
   margin-bottom: 48px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  background: transparent;
+  color: var(--text-titanium);
+  border: 1px solid rgba(244, 240, 232, 0.2);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  padding: 17px 32px;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-button-secondary:hover {
+  border-color: var(--accent-warm-gold);
+  color: var(--accent-warm-gold);
+  transform: translateY(-2px);
 }
 
 /* Magnetic Button */
